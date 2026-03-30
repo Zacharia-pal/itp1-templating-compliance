@@ -1,0 +1,18 @@
+# Lock files
+.pull.lock
+
+# Environment / secrets
+*.env
+.env.*
+
+# State files (generated at runtime)
+.processed_attachments
+.git-sync-state
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
