@@ -1,0 +1,11 @@
+<meta name="address-class" content="semibold"/>
+{%- if recipient.custom_address -%}
+    {% set list1 = recipient.custom_address.split('<w:br/>') %}
+    <meta name="address-line1" content="{{ list1[0] }}"/>
+    <meta name="address-line2" content="{{ list1[1] }}"/>
+    <meta name="address-line3" content="{{ list1[2] }}"/>
+{%- else -%}
+    <meta name="address-line1" content="{% if recipient.addressees is iterable and recipient.addressees is not string %}{{ recipient.addressees | map(attribute='full_name') | join(', ') }}{% else %}{{ recipient.addressees }}{% endif %}"/>
+    <meta name="address-line2" content="{{ recipient.street1 }}"/>
+    <meta name="address-line3" content="{{ recipient.country_code }} - {{ recipient.city_code }} {{ recipient.city }}"/>
+{%- endif -%}

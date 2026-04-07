@@ -1,0 +1,23 @@
+{%- extends 'documents/Generic/empty_letter_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.TI.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    {% include 'includes/recipient-header.html' %}
+    <meta name="print-title" content="{{ code }}"/>
+    <meta name="verbose-name" content="Lettre vide {{ recipient.addressees }}"/>
+{% endblock %}
+
+{%- block subject %}
+<tr>
+    {% call html.render_td(class="label", width="25%") %}{{ _('Subject') }}:{% endcall %}
+    {% call html.render_td() %}{% endcall %}
+</tr>
+{%- endblock %}
+
+{%- block letter_content %}
+    <br>
+    Cher client,<br><br>
+    [TEXTE]<br><br>
+    Nous vous prions d'agr&eacute;er, Cher Monsieur, l'expression de nos sentiments distingu&eacute;s.<br><br>
+{% endblock %}

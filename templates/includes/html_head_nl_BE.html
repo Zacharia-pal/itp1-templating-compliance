@@ -1,0 +1,34 @@
+{%- from 'templates_revision.html' import templates_revision with context -%}
+
+<meta name="print-logo" content="{{ 'NOTIFICATION_LOGO' | get_setting(settings) | convert_stored_image }}"/>
+<meta name="print-qr" content="{{ qr_base64 }}"/>
+<meta name="print-header-class" content="company-header"/>
+<meta name="print-title-class" content="documenttitle-text"/>
+<meta name="print-header" content="{{ 'NOTIFICATION_NAME' | get_setting(settings) }} - {{ 'NOTIFICATION_STREET1' | get_setting(settings) }} - {{ 'NOTIFICATION_CITY_CODE' | get_setting(settings) }} {{ 'NOTIFICATION_CITY_NAME' | get_setting(settings) }}"/>
+
+{%- if 'NOTIFICATION_HEADER_1_nl_BE' is setting_with_value(settings) %}
+<meta name="print-header" content="{{ 'NOTIFICATION_HEADER_1' | get_setting(settings) }}"/>
+{%- else %}
+<meta name="print-header" content=" "/>
+{%- endif %}
+
+{%- if 'NOTIFICATION_HEADER_2_nl_BE' is setting_with_value(settings) %}
+<meta name="print-header" content="{{ 'NOTIFICATION_HEADER_2' | get_setting(settings) }}"/>
+{%- else %}
+<meta name="print-header" content=" "/>
+{%- endif %}
+
+{%- if 'NOTIFICATION_HEADER_3_nl_BE' is setting_with_value(settings) %}
+<meta name="print-header" content="{{ 'NOTIFICATION_HEADER_3' | get_setting(settings) }}"/>
+{%- endif %}
+
+{%- if 'NOTIFICATION_HEADER_4_nl_BE' is setting_with_value(settings) %}
+<meta name="print-header" content="{{ 'NOTIFICATION_HEADER_4' | get_setting(settings) }}"/>
+{%- endif %}
+
+<meta name="print-header" content="{{ document_code | append_locale() }}.{{ templates_revision() }} - {{ now | format_datetime }}"/>
+
+{%- if invalidating_text %}
+<meta name="print-background-class" content="invalidating-text">
+<meta name="print-background" content="{{ invalidating_text }}">
+{%- endif %}
