@@ -1,0 +1,17 @@
+{%- if signatures -%}
+<table class="signatures" width="100%">
+    <tr>
+        {%- for sig in signatures -%}
+        <td width="{{ (100 / signatures|length)|int }}%" valign="top">
+            {%- if sig.image -%}
+            <img src="{{ sig.image|convert_stored_image }}" style="max-height: 60px;"/>
+            <br>
+            {%- endif -%}
+            <strong>{{ sig.name }}</strong><br>
+            {%- if sig.title -%}{{ sig.title }}<br>{%- endif -%}
+            {%- if sig.date -%}{{ sig.date|format_date }}{%- endif -%}
+        </td>
+        {%- endfor -%}
+    </tr>
+</table>
+{%- endif -%}

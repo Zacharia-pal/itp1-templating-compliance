@@ -1,0 +1,26 @@
+{%- extends 'documents/Generic/empty_letter_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.TI.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="address-class" content="semibold"/>
+    <meta name="address-line1" content="{{ recipient.addressees }}"/>
+    <meta name="address-line2" content="{{ recipient.street1 }}"/>
+    <meta name="address-line3" content="{{ recipient.country_code }} - {{ recipient.city_code }} {{ recipient.city }}"/>
+    <meta name="print-title" content="{{ code }}"/>
+    <meta name="verbose-name" content="Lege brief {{ recipient.addressees }}"/>
+{% endblock %}
+
+{%- block subject %}
+<tr>
+    {% call html.render_td(class="label", width="25%") %}{{ _('Subject') }}:{% endcall %}
+    {% call html.render_td() %}{% endcall %}
+</tr>
+{%- endblock %}
+
+{%- block letter_content %}
+    <br>
+    Beste klant,<br><br>
+    [TEKST]<br><br>
+    Wij wensen u een goede ontvangst.<br><br>
+{% endblock %}
