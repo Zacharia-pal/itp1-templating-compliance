@@ -95,8 +95,17 @@ De aanpak is bewust gekozen om **eerst een volledig overzicht** te krijgen van d
 
 De oorspronkelijke planning voorzag 7 sprints van 2 weken met 2 werkdagen per week (~210 uur). Door een latere formele startdatum is dit gecomprimeerd naar 4 sprints met 3 werkdagen per week (~200 uur). De scope is ongewijzigd  - enkel de tijdsverdeling is aangepast.
 
+## Documentatie
+
+- `DOCUMENTATION.md` - Technische documentatie (render stack, macro's, filters, extension guide)
+- `TEMPLATE_REGISTRY.json` - Template registry met metadata per product
+- `COMPAT_MATRIX.md` - Compatibiliteitsmatrix per vFinance-vintage
+- `DoR_DoD.md` - Definition of Ready en Definition of Done
+- `docs/inventory.md` - Volledige template inventaris (23 productlijnen)
+- `docs/versioning-model.md` - vFinance vintage branching documentatie
+
 ## Contact
 
-- **Student**: Zacharia Janssen  - Zacharia.Janssen@student.vives.be
+- **Student**: Zacharia Janssen - Zacharia.Janssen@student.vives.be
 - **Opdrachtgever**: Patronale Life NV, IT-afdeling
-- **Stagebegeleider**: Dirk Hostens  - dirk.hostens@vives.be
+- **Stagebegeleider**: Dirk Hostens - dirk.hostens@vives.be
