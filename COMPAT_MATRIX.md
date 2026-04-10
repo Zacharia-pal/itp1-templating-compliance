@@ -4,7 +4,7 @@
 
 Deze matrix toont welke templates compatibel zijn met welke vFinance-vintage. Een ✅ betekent dat de template volledig werkt op die vintage. Een ⚠️ betekent dat er kleine variabele-verschillen zijn die niet breaking zijn. Een ❌ betekent dat de template niet compatible is.
 
-**Status:** Skeleton  - wordt uitgebreid in Sprint 1 (migratie) en Sprint 3 (volledige invulling)
+**Status:** Sprint 0 - basis ingevuld, wordt verder uitgebreid in Sprint 1 en Sprint 3
 
 ---
 
