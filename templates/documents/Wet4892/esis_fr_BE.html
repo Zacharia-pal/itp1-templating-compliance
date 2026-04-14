@@ -1,0 +1,18 @@
+{%- extends 'documents/NewHyp/esis_fr_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.ESIS.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="ESIS - Loi 4892"/>
+    <meta name="verbose-name" content="ESIS conforme Loi 4892"/>
+{% endblock %}
+
+{% block esis_subtitle %}Credit hypothecaire conforme a la Loi 4892{% endblock %}
+
+{% block section_warnings_title %}4. Avertissements specifiques Loi 4892{% endblock %}
+
+{% block warnings_content %}
+{{ super() }}
+<p><strong>Obligation supplementaire sous la Loi 4892:</strong>
+le preteur est tenu d'un devoir d'information et de diligence renforce. L'emprunteur dispose d'un delai de reflexion conforme a la loi.</p>
+{% endblock %}

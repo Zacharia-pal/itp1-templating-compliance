@@ -1,0 +1,52 @@
+{# ESIS basis voor NewHyp. Locale-varianten extenden dit bestand. #}
+{%- extends '_shared/_base_document.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{% block coverpage %}
+<div class="coverpage">
+    {{ html.hypo_header(language) }}
+    <h1>{% block esis_title %}{% endblock %}</h1>
+    <p class="esis-subtitle">{% block esis_subtitle %}{% endblock %}</p>
+</div>
+{% endblock %}
+
+{% block document_content %}
+    {% block section_lender %}
+        <h2>{% block section_lender_title %}{% endblock %}</h2>
+        <p>{{ lender.name }}</p>
+        <p>{{ lender.address }}</p>
+    {% endblock %}
+
+    {% block section_loan %}
+        <h2>{% block section_loan_title %}{% endblock %}</h2>
+        <table class="esis-loan">
+            <tr>
+                <td>{% block label_amount %}{% endblock %}</td>
+                <td>{{ fmt.be_amount(loan.amount) }} EUR</td>
+            </tr>
+            <tr>
+                <td>{% block label_duration %}{% endblock %}</td>
+                <td>{{ loan.duration_months }} {% block label_months %}{% endblock %}</td>
+            </tr>
+            <tr>
+                <td>{% block label_rate %}{% endblock %}</td>
+                <td>{{ html.percentage(loan.interest_rate) }}</td>
+            </tr>
+            <tr>
+                <td>{% block label_taeg %}{% endblock %}</td>
+                <td>{{ html.percentage(loan.taeg) }}</td>
+            </tr>
+        </table>
+    {% endblock %}
+
+    {% block section_schedule %}
+        <h2>{% block section_schedule_title %}{% endblock %}</h2>
+        {% include 'documents/NewHyp/includes/loan_schedule.html' %}
+    {% endblock %}
+
+    {% block section_warnings %}
+        <h2>{% block section_warnings_title %}{% endblock %}</h2>
+        {% block warnings_content %}{% endblock %}
+    {% endblock %}
+{% endblock %}
