@@ -1,0 +1,51 @@
+{%- macro render_table(class='', width='100%') -%}
+<table class="{{ class }}" width="{{ width }}" cellpadding="0" cellspacing="0">
+    {{ caller() }}
+</table>
+{%- endmacro -%}
+
+{%- macro render_td(class='', width=None, colspan=None, valign='top') -%}
+<td{% if class %} class="{{ class }}"{% endif %}{% if width %} width="{{ width }}"{% endif %}{% if colspan %} colspan="{{ colspan }}"{% endif %} valign="{{ valign }}">
+    {{ caller() }}
+</td>
+{%- endmacro -%}
+
+{%- macro render_title_table(title, class='document-title') -%}
+<table class="{{ class }}" width="100%">
+    <tr><td>{{ title }}</td></tr>
+</table>
+{%- endmacro -%}
+
+{%- macro render_todo_font(text) -%}
+<span style="color: #c0392b; font-weight: bold;">[TODO: {{ text }}]</span>
+{%- endmacro -%}
+
+{%- macro render_tbd_font(text='TBD') -%}
+<span style="color: #999; font-style: italic;">{{ text }}</span>
+{%- endmacro -%}
+
+{%- macro hypo_header(language='nl_BE') -%}
+{%- if language == 'nl_BE' -%}
+<table class="hypo-header" width="100%">
+    <tr><td><strong>Hypothecair krediet</strong></td></tr>
+</table>
+{%- elif language == 'fr_BE' -%}
+<table class="hypo-header" width="100%">
+    <tr><td><strong>Crédit hypothécaire</strong></td></tr>
+</table>
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro currency(amount, language='nl_BE') -%}
+{%- if amount is not none -%}
+{{ amount|format_currency }}
+{%- else -%}
+{{ render_tbd_font() }}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro percentage(value, decimals=2) -%}
+{%- if value is not none -%}
+{{ '%.{}f'.format(decimals) | format(value) }}%
+{%- endif -%}
+{%- endmacro -%}

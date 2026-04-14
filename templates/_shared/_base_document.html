@@ -1,0 +1,20 @@
+{# Basis voor formele documenten: contracten, ESIS, certificaten.
+   Verschilt van _base_letter doordat coverpage en hoofdblokken expliciet zijn. #}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block html_head %}{% endblock %}
+
+{% block coverpage %}{% endblock %}
+
+{% call html.render_table(class="document") %}
+    {% block document_title %}{% endblock %}
+    <tr>
+        {% call html.render_td(colspan="2") %}
+            {% block document_content %}{% endblock %}
+        {% endcall %}
+    </tr>
+{% endcall %}
+
+{% block document_footer %}
+    {% include 'includes/signatures.html' %}
+{% endblock %}
