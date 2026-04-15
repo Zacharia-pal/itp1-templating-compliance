@@ -1,0 +1,19 @@
+{%- extends 'documents/Generic/eid_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.EID.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Identiteitsdocument"/>
+    <meta name="verbose-name" content="Identiteitsdocument bij polis"/>
+{% endblock %}
+
+{% block eid_title %}Identiteitsgegevens{% endblock %}
+{% block eid_intro %}
+<p>Dit document bevestigt de identiteit van de hieronder vermelde personen, in het kader van het product {{ product.name }}.</p>
+{% endblock %}
+{% block label_role %}Rol{% endblock %}
+{% block label_name %}Naam{% endblock %}
+{% block label_birth %}Geboorte{% endblock %}
+{% block label_national_nr %}Rijksregisternummer{% endblock %}
+{% block label_address %}Adres{% endblock %}
+{% block label_id_doc %}Identiteitsbewijs{% endblock %}
