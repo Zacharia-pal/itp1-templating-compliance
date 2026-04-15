@@ -1,0 +1,22 @@
+{# Algemene Voorwaarden basis. Specifieke producten extenden en overriden secties. #}
+{%- extends '_shared/_base_document.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block coverpage %}
+<div class="coverpage av-cover">
+    <h1>{% block av_title %}{% endblock %}</h1>
+    <p>{% block av_product %}{% endblock %}</p>
+    <p>{% block av_version %}{% endblock %}</p>
+</div>
+{% endblock %}
+
+{% block document_content %}
+    {% block av_intro %}{% endblock %}
+    {% block av_definitions %}{% endblock %}
+    {% block av_scope %}{% endblock %}
+    {% block av_obligations %}{% endblock %}
+    {% block av_termination %}{% endblock %}
+    {% block av_complaints %}{% endblock %}
+    {% block av_data_protection %}{% endblock %}
+    {% block av_jurisdiction %}{% endblock %}
+{% endblock %}

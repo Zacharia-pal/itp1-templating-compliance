@@ -1,0 +1,61 @@
+{%- extends 'documents/Generic/av_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.AV.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Conditions Generales"/>
+    <meta name="verbose-name" content="Conditions Generales {{ product.name }}"/>
+{% endblock %}
+
+{% block av_title %}Conditions Generales{% endblock %}
+{% block av_product %}{{ product.name }}{% endblock %}
+{% block av_version %}Version {{ av_version | default('2026.1') }} - en vigueur a partir du {{ av_valid_from | format_date }}{% endblock %}
+
+{% block av_intro %}
+<h2>1. Introduction</h2>
+<p>Les presentes conditions generales reglent les droits et obligations des parties dans le cadre du produit decrit ci-dessous.
+Avec les conditions particulieres, elles constituent le contrat entre le client et {{ lender.name | default('Patronale Life SA') }}.</p>
+{% endblock %}
+
+{% block av_definitions %}
+<h2>2. Definitions</h2>
+<dl>
+    <dt>Client</dt><dd>La personne physique qui souscrit le produit.</dd>
+    <dt>Preneur d'assurance</dt><dd>Celui qui conclut le contrat d'assurance.</dd>
+    <dt>Beneficiaire</dt><dd>Celui qui recoit la prestation.</dd>
+    <dt>Police</dt><dd>Le document qui confirme le contrat.</dd>
+</dl>
+{% endblock %}
+
+{% block av_scope %}
+<h2>3. Champ d'application</h2>
+<p>Les presentes conditions s'appliquent au produit {{ product.name }} et sont sans prejudice des dispositions legales imperatives.</p>
+{% endblock %}
+
+{% block av_obligations %}
+<h2>4. Obligations</h2>
+<p>Le client s'engage a communiquer toutes les informations de maniere correcte et complete.
+{{ lender.name | default('Patronale Life SA') }} s'engage a gerer le produit conformement aux presentes conditions.</p>
+{% endblock %}
+
+{% block av_termination %}
+<h2>5. Fin du contrat</h2>
+<p>Le contrat prend fin conformement aux conditions particulieres ou en cas de resiliation conforme a la loi.</p>
+{% endblock %}
+
+{% block av_complaints %}
+<h2>6. Reclamations</h2>
+<p>Les reclamations peuvent etre adressees par ecrit a {{ complaints_address | default('plaintes@patronale-life.be') }}.
+Le Service Ombudsman des Assurances reste egalement competent.</p>
+{% endblock %}
+
+{% block av_data_protection %}
+<h2>7. Protection des donnees personnelles</h2>
+<p>Le traitement des donnees personnelles s'effectue conformement au Reglement General sur la Protection des Donnees.
+La politique de confidentialite complete est disponible sur le site web de {{ lender.name | default('Patronale Life SA') }}.</p>
+{% endblock %}
+
+{% block av_jurisdiction %}
+<h2>8. Droit applicable</h2>
+<p>Le droit belge s'applique au present contrat. Les tribunaux de l'arrondissement du siege de {{ lender.name | default('Patronale Life SA') }} sont competents.</p>
+{% endblock %}
