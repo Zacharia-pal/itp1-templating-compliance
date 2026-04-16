@@ -1,0 +1,18 @@
+{%- extends '_shared/_base_letter.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.LSCH.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Tableau d'amortissement"/>
+    <meta name="verbose-name" content="Tableau d'amortissement {{ contract.number }}"/>
+{% endblock %}
+
+{% block subject %}
+<tr><td colspan="2"><strong>Tableau d'amortissement</strong> pour contrat {{ contract.number }}</td></tr>
+{% endblock %}
+
+{% block letter_content %}
+<p>Cher client,</p>
+<p>Vous trouverez ci-dessous le tableau d'amortissement complet pour votre credit hypothecaire.</p>
+{% include 'documents/NewHyp/includes/loan_schedule.html' %}
+{% endblock %}

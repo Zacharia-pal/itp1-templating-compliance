@@ -1,0 +1,18 @@
+{%- extends '_shared/_base_letter.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.LSCH.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Aflossingsplan"/>
+    <meta name="verbose-name" content="Aflossingsplan {{ contract.number }}"/>
+{% endblock %}
+
+{% block subject %}
+<tr><td colspan="2"><strong>Aflossingsplan</strong> voor contract {{ contract.number }}</td></tr>
+{% endblock %}
+
+{% block letter_content %}
+<p>Beste klant,</p>
+<p>Hieronder vindt u het volledige aflossingsplan voor uw hypothecair krediet.</p>
+{% include 'documents/NewHyp/includes/loan_schedule.html' %}
+{% endblock %}

@@ -1,0 +1,54 @@
+{# Aflossingsplan voor hypothecair krediet.
+   Toont per aflossingstermijn: kapitaal, interest, openstaand saldo.
+   Voor geindexeerde leningen wordt een aparte kolom toegevoegd.
+
+   Detectie van geindexeerd plan: we kijken of de eerste schedule entry
+   een index_percentage in de vorm '0,00%' bevat OF expliciet via
+   schedule.is_indexed gemarkeerd is.
+
+   N.B.: de string-vergelijking met '0,00%' is fragiel zodra de bedragen
+   gelokaliseerd zijn (komma vs punt) - dit komt later aan bod. #}
+
+{%- macro is_index_schedule(schedule) -%}
+    {%- if schedule.is_indexed -%}true
+    {%- elif schedule.entries and schedule.entries[0].index_percentage and schedule.entries[0].index_percentage != '0,00%' -%}true
+    {%- else -%}false
+    {%- endif -%}
+{%- endmacro -%}
+
+{%- set indexed = is_index_schedule(schedule) | trim == 'true' -%}
+
+<table class="loan-schedule" width="100%">
+    <thead>
+        <tr>
+            <th>{% block header_period %}Termijn{% endblock %}</th>
+            <th>{% block header_due_date %}Vervaldag{% endblock %}</th>
+            <th>{% block header_capital %}Kapitaal{% endblock %}</th>
+            <th>{% block header_interest %}Interest{% endblock %}</th>
+            {%- if indexed %}
+            <th>{% block header_index %}Index %{% endblock %}</th>
+            {%- endif %}
+            <th>{% block header_outstanding %}Saldo{% endblock %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%- for entry in schedule.entries %}
+        <tr{% if loop.index is divisibleby 2 %} class="even"{% endif %}>
+            <td>{{ loop.index }}</td>
+            <td>{{ entry.due_date | format_date }}</td>
+            <td class="amount">{{ entry.capital | format_currency }}</td>
+            <td class="amount">{{ entry.interest | format_currency }}</td>
+            {%- if indexed %}
+            <td class="amount">{{ entry.index_percentage }}</td>
+            {%- endif %}
+            <td class="amount">{{ entry.outstanding | format_currency }}</td>
+        </tr>
+        {%- endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="{% if indexed %}5{% else %}4{% endif %}">{% block label_total %}Totaal{% endblock %}</td>
+            <td class="amount">{{ schedule.total | format_currency }}</td>
+        </tr>
+    </tfoot>
+</table>
