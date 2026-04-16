@@ -1,0 +1,8 @@
+{%- extends 'includes/xmp/xmp_base.xml' -%}
+
+{% block xmp_extra %}
+      <pl:productLine>Life_Insurance</pl:productLine>
+      <pl:documentType>contract</pl:documentType>
+      <pl:policyNumber>{{ policy.number | default('') }}</pl:policyNumber>
+      <pl:insuredPersons>{{ persons | length }}</pl:insuredPersons>
+{% endblock %}

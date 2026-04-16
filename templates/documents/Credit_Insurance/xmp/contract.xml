@@ -1,0 +1,8 @@
+{%- extends 'includes/xmp/xmp_base.xml' -%}
+
+{% block xmp_extra %}
+      <pl:productLine>Credit_Insurance</pl:productLine>
+      <pl:documentType>contract</pl:documentType>
+      <pl:linkedCreditNumber>{{ linked_credit.number | default('') }}</pl:linkedCreditNumber>
+      <pl:medicalQuestionnaire>{{ medical_questionnaire.code | default('') }}</pl:medicalQuestionnaire>
+{% endblock %}

@@ -1,0 +1,9 @@
+{%- extends 'includes/xmp/xmp_base.xml' -%}
+
+{% block xmp_extra %}
+      <pl:productLine>Life_Insurance</pl:productLine>
+      <pl:documentType>amendment</pl:documentType>
+      <pl:policyNumber>{{ policy.number | default('') }}</pl:policyNumber>
+      <pl:amendmentReason>{{ amendment.reason | default('') }}</pl:amendmentReason>
+      <pl:effectiveDate>{{ amendment.effective_date | format_date }}</pl:effectiveDate>
+{% endblock %}
