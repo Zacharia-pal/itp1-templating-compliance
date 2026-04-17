@@ -1,0 +1,22 @@
+{# Gedeelde rollen-include. Toont een lijst van personen met hun rol
+   in de polis: verzekeringnemer, verzekerde, begunstigde, etc. #}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+<table class="roles" width="100%">
+    <thead>
+        <tr>
+            <th>{% block role_label %}{% endblock %}</th>
+            <th>{% block name_label %}{% endblock %}</th>
+            <th>{% block share_label %}{% endblock %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%- for role in roles %}
+        <tr>
+            <td>{{ role.role_label }}</td>
+            <td>{{ role.full_name }}</td>
+            <td>{% if role.share is not none %}{{ role.share }}%{% endif %}</td>
+        </tr>
+        {%- endfor %}
+    </tbody>
+</table>
