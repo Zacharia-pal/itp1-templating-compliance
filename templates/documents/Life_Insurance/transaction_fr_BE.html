@@ -1,0 +1,25 @@
+{%- extends '_shared/_base_letter.html' -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{% block html_head %}
+    {% set document_code = '%s.TXN.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Confirmation de transaction"/>
+{% endblock %}
+
+{% block subject %}
+<tr><td colspan="2"><strong>Confirmation de transaction</strong> {{ transaction.reference }}</td></tr>
+{% endblock %}
+
+{% block letter_content %}
+<p>Cher client,</p>
+<p>Nous confirmons la transaction suivante sur votre police {{ policy.number }}:</p>
+<table class="transaction">
+    <tr><td>Type</td><td>{{ transaction.type_label }}</td></tr>
+    <tr><td>Date</td><td>{{ transaction.date | format_date }}</td></tr>
+    <tr><td>Montant</td><td>{{ fmt.be_amount(transaction.amount) }} EUR</td></tr>
+    <tr><td>Compte de contrepartie</td><td>{{ transaction.counter_account }}</td></tr>
+    <tr><td>Communication</td><td>{{ transaction.communication }}</td></tr>
+</table>
+<p>Cordialement</p>
+{% endblock %}

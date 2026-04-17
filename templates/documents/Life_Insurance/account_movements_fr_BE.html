@@ -1,0 +1,48 @@
+{%- extends '_shared/_base_letter.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{% block html_head %}
+    {% set document_code = '%s.MOV.fr_BE'|format(productcode) %}
+    {% set xmp_template = 'documents/Life_Insurance/xmp/contract.xml' %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Mouvements de compte"/>
+{% endblock %}
+
+{% block subject %}
+<tr><td colspan="2"><strong>Mouvements de compte</strong> pour la police {{ policy.number }} - du {{ period_from | format_date }} au {{ period_to | format_date }}</td></tr>
+{% endblock %}
+
+{% block letter_content %}
+<p>Cher client,</p>
+<p>Vous trouverez ci-dessous un releve des mouvements sur votre compte d'assurance.</p>
+
+<table class="movements" width="100%">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Libelle</th>
+            <th>Type</th>
+            <th class="amount">Montant</th>
+            <th class="amount">Solde</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%- for mv in movements %}
+        <tr>
+            <td>{{ mv.date | format_date }}</td>
+            <td>{{ mv.description }}</td>
+            <td>{{ mv.type_label }}</td>
+            <td class="amount">{{ fmt.be_amount(mv.amount) }}</td>
+            <td class="amount">{{ fmt.be_amount(mv.balance) }}</td>
+        </tr>
+        {%- endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Solde final</td>
+            <td class="amount" colspan="2">{{ fmt.be_amount(closing_balance) }} EUR</td>
+        </tr>
+    </tfoot>
+</table>
+{% endblock %}

@@ -1,0 +1,7 @@
+{%- extends 'documents/Life_Insurance/account_movements_fr_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.MOV.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Mouvements de compte Boutique 23"/>
+{% endblock %}
