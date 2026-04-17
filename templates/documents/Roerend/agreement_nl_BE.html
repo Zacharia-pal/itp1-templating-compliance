@@ -1,0 +1,23 @@
+{%- extends 'documents/Generic/agreement_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.AGR.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Kredietovereenkomst Roerend"/>
+{% endblock %}
+
+{% block agreement_title %}Roerende kredietovereenkomst{% endblock %}
+{% block parties_label %}Partijen{% endblock %}
+{% block lender_label %}Kredietgever{% endblock %}
+{% block borrower_label %}Kredietnemer{% endblock %}
+{% block clauses_label %}Voorwaarden{% endblock %}
+
+{% block agreement_body %}
+<p>De kredietgever verleent een consumentenkrediet zonder hypothecaire waarborg:</p>
+<ul>
+    <li>Bedrag: {{ contract.amount | format_currency }} EUR</li>
+    <li>Looptijd: {{ contract.duration_months }} maanden</li>
+    <li>JKP (TAEG): {{ contract.taeg }}%</li>
+</ul>
+<p>Verkoper {{ retailer.name }} treedt op als kredietbemiddelaar.</p>
+{% endblock %}

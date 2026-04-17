@@ -1,0 +1,24 @@
+{%- extends 'documents/Generic/agreement_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.AGR.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Contrat de credit"/>
+{% endblock %}
+
+{% block agreement_title %}Contrat de credit NewHyp{% endblock %}
+{% block parties_label %}Parties{% endblock %}
+{% block lender_label %}Preteur{% endblock %}
+{% block borrower_label %}Emprunteur{% endblock %}
+{% block clauses_label %}Conditions{% endblock %}
+
+{% block agreement_body %}
+<p>Les parties conviennent ce qui suit:</p>
+<ol>
+    <li>Le preteur consent a l'emprunteur un credit hypothecaire de {{ contract.amount | format_currency }} EUR.</li>
+    <li>La duree est de {{ contract.duration_months }} mois, avec un taux debiteur de {{ contract.rate }}%.</li>
+    <li>L'emprunteur s'engage a verser une mensualite de {{ contract.monthly | format_currency }} EUR.</li>
+    <li>En cas de defaut de paiement, un interet de retard sera applique conformement aux conditions generales.</li>
+    <li>Le present contrat est regi par les conditions generales NewHyp et les conditions particulieres.</li>
+</ol>
+{% endblock %}
