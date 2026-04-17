@@ -2,16 +2,16 @@
    Toont per aflossingstermijn: kapitaal, interest, openstaand saldo.
    Voor geindexeerde leningen wordt een aparte kolom toegevoegd.
 
-   Detectie van geindexeerd plan: we kijken of de eerste schedule entry
-   een index_percentage in de vorm '0,00%' bevat OF expliciet via
-   schedule.is_indexed gemarkeerd is.
-
-   N.B.: de string-vergelijking met '0,00%' is fragiel zodra de bedragen
-   gelokaliseerd zijn (komma vs punt) - dit komt later aan bod. #}
+   Detectie van geindexeerd plan gebeurt op de RUWE numerieke waarde
+   van index_percentage - niet op de gelokaliseerde string. De vorige
+   string-vergelijking '0,00%' faalde voor FR-renders die '0.00%'
+   produceren en voor renderings zonder '%' suffix. #}
 
 {%- macro is_index_schedule(schedule) -%}
     {%- if schedule.is_indexed -%}true
-    {%- elif schedule.entries and schedule.entries[0].index_percentage and schedule.entries[0].index_percentage != '0,00%' -%}true
+    {%- elif schedule.entries -%}
+        {%- set raw = schedule.entries[0].index_percentage_raw | default(none) -%}
+        {%- if raw is not none and raw != 0 -%}true{%- else -%}false{%- endif -%}
     {%- else -%}false
     {%- endif -%}
 {%- endmacro -%}
