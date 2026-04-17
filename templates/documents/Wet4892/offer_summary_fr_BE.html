@@ -1,0 +1,24 @@
+{%- extends 'documents/Wet4892/offer_summary_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.OFFER.fr_BE'|format(productcode) %}
+    {% set xmp_template = 'documents/Wet4892/xmp/offer.xml' %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Recapitulatif de l'offre"/>
+{% endblock %}
+
+{% block offer_title %}Recapitulatif de l'offre{% endblock %}
+{% block offer_reference %}Reference{% endblock %}
+{% block offer_validity %}Valide jusqu'au{% endblock %}
+{% block label_borrower %}Emprunteur{% endblock %}
+{% block label_amount %}Montant du credit{% endblock %}
+{% block label_duration %}Duree (mois){% endblock %}
+{% block label_rate %}Taux debiteur{% endblock %}
+{% block label_taeg %}TAEG{% endblock %}
+{% block label_monthly %}Mensualite{% endblock %}
+{% block label_total_cost %}Cout total{% endblock %}
+{% block label_asset_section %}Evaluation du bien immobilier{% endblock %}
+{% block decision_both %}Valeur retenue (minimum entre KBI et estimation):{% endblock %}
+{% block decision_kbi %}Valeur KBI retenue:{% endblock %}
+{% block decision_value %}Valeur d'estimation retenue:{% endblock %}
+{% block decision_none %}Aucune evaluation n'est encore disponible pour le bien.{% endblock %}

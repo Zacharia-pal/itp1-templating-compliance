@@ -1,0 +1,44 @@
+{# Offer summary voor Wet 4892 hypothecaire kredieten.
+   Toont de kerngegevens van de aanbieding in een compacte samenvatting. #}
+{%- extends '_shared/_base_document.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{% block coverpage %}
+<div class="coverpage offer-cover">
+    {{ html.hypo_header(language) }}
+    <h1>{% block offer_title %}{% endblock %}</h1>
+    <p>{% block offer_reference %}{% endblock %}: {{ offer.reference }}</p>
+    <p>{% block offer_validity %}{% endblock %}: {{ offer.valid_until | format_date }}</p>
+</div>
+{% endblock %}
+
+{% block document_content %}
+    {% block summary_table %}
+    <table class="offer-summary" width="100%">
+        <tr><td class="label">{% block label_borrower %}{% endblock %}</td><td>{{ borrower.full_name }}</td></tr>
+        <tr><td class="label">{% block label_amount %}{% endblock %}</td><td>{{ fmt.be_amount(offer.amount) }} EUR</td></tr>
+        <tr><td class="label">{% block label_duration %}{% endblock %}</td><td>{{ offer.duration_months }}</td></tr>
+        <tr><td class="label">{% block label_rate %}{% endblock %}</td><td>{{ html.percentage(offer.rate) }}</td></tr>
+        <tr><td class="label">{% block label_taeg %}{% endblock %}</td><td>{{ html.percentage(offer.taeg) }}</td></tr>
+        <tr><td class="label">{% block label_monthly %}{% endblock %}</td><td>{{ fmt.be_amount(offer.monthly_amount) }} EUR</td></tr>
+        <tr><td class="label">{% block label_total_cost %}{% endblock %}</td><td>{{ fmt.be_amount(offer.total_cost) }} EUR</td></tr>
+    </table>
+    {% endblock %}
+
+    {% block asset_decision %}
+        <h2>{% block label_asset_section %}{% endblock %}</h2>
+        {%- set has_value = asset.estimated_value is not none and asset.estimated_value > 0 -%}
+        {%- set has_kbi = asset.kbi_value is not none and asset.kbi_value > 0 -%}
+        {%- if has_kbi and has_value -%}
+            {%- set chosen = [asset.kbi_value, asset.estimated_value] | min -%}
+            <p>{% block decision_both %}{% endblock %} {{ fmt.be_amount(chosen) }} EUR.</p>
+        {%- elif has_kbi -%}
+            <p>{% block decision_kbi %}{% endblock %} {{ fmt.be_amount(asset.kbi_value) }} EUR.</p>
+        {%- elif has_value -%}
+            <p>{% block decision_value %}{% endblock %} {{ fmt.be_amount(asset.estimated_value) }} EUR.</p>
+        {%- else -%}
+            <p>{% block decision_none %}{% endblock %}</p>
+        {%- endif %}
+    {% endblock %}
+{% endblock %}

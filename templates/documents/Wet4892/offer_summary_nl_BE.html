@@ -1,0 +1,24 @@
+{%- extends 'documents/Wet4892/offer_summary_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.OFFER.nl_BE'|format(productcode) %}
+    {% set xmp_template = 'documents/Wet4892/xmp/offer.xml' %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Aanbiedingsoverzicht"/>
+{% endblock %}
+
+{% block offer_title %}Aanbiedingsoverzicht{% endblock %}
+{% block offer_reference %}Referentie{% endblock %}
+{% block offer_validity %}Geldig tot{% endblock %}
+{% block label_borrower %}Kredietnemer{% endblock %}
+{% block label_amount %}Kredietbedrag{% endblock %}
+{% block label_duration %}Looptijd (maanden){% endblock %}
+{% block label_rate %}Debetrentevoet{% endblock %}
+{% block label_taeg %}JKP (TAEG){% endblock %}
+{% block label_monthly %}Maandelijkse betaling{% endblock %}
+{% block label_total_cost %}Totale kosten{% endblock %}
+{% block label_asset_section %}Waardering onroerend goed{% endblock %}
+{% block decision_both %}Aangenomen waarde (laagste van KBI en schatting):{% endblock %}
+{% block decision_kbi %}KBI-waarde aangehouden:{% endblock %}
+{% block decision_value %}Schattingswaarde aangehouden:{% endblock %}
+{% block decision_none %}Er is nog geen waardering beschikbaar voor het onderpand.{% endblock %}
