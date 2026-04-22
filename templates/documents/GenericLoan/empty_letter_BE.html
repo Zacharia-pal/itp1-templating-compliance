@@ -1,16 +1,3 @@
-{%- import 'macros/html.html' as html with context -%}
-
-{% block html_head %}{% endblock %}
-
-{% call html.render_table(class="letter") %}
-    {% block subject %}{% endblock %}
-    <tr>
-        {% call html.render_td(colspan="2") %}
-            {% block letter_content %}{% endblock %}
-        {% endcall %}
-    </tr>
-{% endcall %}
-
-{% block letter_signature %}
-    {% include 'includes/signatures.html' %}
-{% endblock %}
+{# GenericLoan deelt de brief-base met Generic. De extra hypo_header
+   wordt op het html_head niveau gezet door de locale-varianten. #}
+{%- extends '_shared/_base_letter.html' -%}
