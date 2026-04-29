@@ -1,0 +1,10 @@
+{# Tak 21 specifieke voet: toont de gewaarborgde rentevoet en de taks op de
+   premie apart. Tak 23/44 hebben dit niet (geen gewaarborgd rendement). #}
+<tr>
+    <td colspan="2" class="invoice-state">
+        {% if guaranteed_rate is defined %}
+            <span>Gewaarborgde rentevoet: {{ guaranteed_rate|format_percentage }}</span>
+        {% endif %}
+        <span>Premietaks: {{ premium_tax|default(0)|format_currency }}</span>
+    </td>
+</tr>
