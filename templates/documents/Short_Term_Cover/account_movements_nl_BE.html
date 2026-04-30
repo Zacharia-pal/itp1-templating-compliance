@@ -1,0 +1,10 @@
+{# Short_Term_Cover rekeningbewegingen erft nu van de Life_Insurance basis.
+   Voorheen had dit product een eigen losse template. Door te extenden volgt
+   het automatisch fixes/wijzigingen in de gedeelde movements base. #}
+{%- extends 'documents/Life_Insurance/account_movements_nl_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.MOV.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Rekeningbewegingen Short Term Cover"/>
+{% endblock %}

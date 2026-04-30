@@ -1,0 +1,9 @@
+{%- extends 'documents/_shared_boutique/regdata_ng_base_nl_BE.html' -%}
+
+{% block fund_name %}Patronale Euro Bond{% endblock %}
+{% block fund_code %}ng_101{% endblock %}
+{% block isin %}BE0007654321{% endblock %}
+{% block extra_rows %}
+    {# obligatiefonds toont ook duration #}
+    <tr><td class="label">Duration</td><td>{{ duration|default('-') }}</td></tr>
+{% endblock %}

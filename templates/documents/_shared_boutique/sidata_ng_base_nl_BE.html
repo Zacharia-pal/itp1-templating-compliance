@@ -1,0 +1,14 @@
+{# Gedeelde SIData basis (standaard info fondsfiche). Zelfde producten als
+   REGData. Verschil met REGData: SIData toont ook risicoklasse en kosten. #}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block html_head %}
+    {% include 'includes/html_head_nl_BE.html' %}
+{% endblock %}
+
+{% call html.render_table(class="sidata") %}
+    <tr><td class="label">Fonds</td><td>{% block fund_name %}{% endblock %}</td></tr>
+    <tr><td class="label">Risicoklasse (SRI)</td><td>{% block sri %}{{ sri_class|default('-') }}{% endblock %}</td></tr>
+    <tr><td class="label">Lopende kosten</td><td>{% block ongoing_costs %}{{ ongoing_costs|default(0)|format_percentage }}{% endblock %}</td></tr>
+    {% block extra_rows %}{% endblock %}
+{% endcall %}
