@@ -4,7 +4,7 @@
 
 Deze matrix toont welke templates compatibel zijn met welke vFinance-vintage. Een ✅ betekent dat de template volledig werkt op die vintage. Een ⚠️ betekent dat er kleine variabele-verschillen zijn die niet breaking zijn. Een ❌ betekent dat de template niet compatible is.
 
-**Status:** Sprint 1 afgerond - ESIS, AV, EID, loan_schedule, offer_summary, agreement, account_movements en transaction toegevoegd. Sprint 3 dekt de overige templates en finaliseert.
+**Status:** Sprint 2 afgerond - SKM consolidatie (Generic21/23/44 erven van een gedeelde base, Boutique REGData/SIData gedeelde ng-base, Short_Term_Cover movements naar Life_Insurance base). Sprint 3 dekt de overige templates en finaliseert.
 
 ---
 
@@ -25,6 +25,14 @@ Deze matrix toont welke templates compatibel zijn met welke vFinance-vintage. Ee
 | | eid | ⚠️ | ✅ | ✅ | Loop over persons, vintage_977 mist national_number formatting |
 | | agreement | ⚠️ | ✅ | ✅ | Generic basis voor alle agreement varianten |
 | | certificate | ⚠️ | ✅ | ✅ | Coverpage + packages-blok |
+| **Generic21** | account_movements | ⚠️ | ✅ | ✅ | Erft Generic23 + Tak 21 invoice_state override (gewaarborgde rente, premietaks) |
+| | certificate | ⚠️ | ✅ | ✅ | Erft Generic certificate, enkel coverpage titel |
+| **Generic23** | account_movements | ⚠️ | ✅ | ✅ | Familie-base, erft Life_Insurance movements |
+| | certificate | ⚠️ | ✅ | ✅ | Erft Generic certificate |
+| **Generic44** | account_movements | ⚠️ | ✅ | ✅ | Erft Generic23, cosmetisch identiek aan Tak 23 |
+| | certificate | ⚠️ | ✅ | ✅ | Erft Generic certificate |
+| **_shared_boutique** | regdata_ng base | ❌ | ✅ | ✅ | Gedeelde ng_xxx base voor Boutique_23, Evolis, Patronale_Life_Flexible |
+| | sidata_ng base | ❌ | ✅ | ✅ | SRI + lopende kosten, zelfde producten |
 | **GenericLoan** | empty_letter | ⚠️ | ✅ | ✅ | Uitgebreide address meta tags |
 | | GBL_HYP_* | ⚠️ | ✅ | ✅ | 15+ varianten |
 | **Life_Insurance** | contract | ❌ | ✅ | ✅ | Complexe includes, nieuwe roles structuur |
@@ -44,6 +52,7 @@ Deze matrix toont welke templates compatibel zijn met welke vFinance-vintage. Ee
 | | proposal | ⚠️ | ✅ | ✅ | |
 | | esis | ❌ | ✅ | ✅ | Extends NewHyp ESIS, alleen subtitle override |
 | **Short_Term_Cover** | contract | ✅ | ✅ | ✅ | |
+| | account_movements | ⚠️ | ✅ | ✅ | Sprint 2: gemigreerd naar Life_Insurance movements base |
 
 ---
 

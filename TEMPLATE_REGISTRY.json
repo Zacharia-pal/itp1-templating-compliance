@@ -1,8 +1,8 @@
 {
   "meta": {
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Template Registry  - maps template keys to product lines, SKMs, and vFinance lifecycle stages",
-    "last_updated": "2026-04-23",
+    "last_updated": "2026-05-08",
     "schema": {
       "template_key": "Unique identifier for the template",
       "product_line": "Product family (e.g., Life_Insurance, NewHyp)",
@@ -354,7 +354,77 @@
       "has_xmp": false,
       "includes": [],
       "notes": "Bevestiging van enkelvoudige transactie"
+    },
+    {
+      "template_key": "generic23.account_movements",
+      "product_line": "Generic23",
+      "document_type": "account_movements",
+      "locales": ["nl_BE", "fr_BE"],
+      "vintage_branch": "vintage_1074",
+      "lifecycle_stage": "feature-freeze",
+      "semver": "1.0.0",
+      "has_regdata": false,
+      "has_sidata": false,
+      "has_xmp": false,
+      "includes": [],
+      "notes": "Sprint 2 consolidatie: familie-base voor Tak 23 generic movements, erft Life_Insurance"
+    },
+    {
+      "template_key": "generic21.account_movements",
+      "product_line": "Generic21",
+      "document_type": "account_movements",
+      "locales": ["nl_BE", "fr_BE"],
+      "vintage_branch": "vintage_1074",
+      "lifecycle_stage": "feature-freeze",
+      "semver": "1.0.0",
+      "has_regdata": false,
+      "has_sidata": false,
+      "has_xmp": false,
+      "includes": ["Generic21/includes/invoice_state_override.html"],
+      "notes": "Erft Generic23, voegt Tak 21 invoice_state override toe (gewaarborgde rente + premietaks)"
+    },
+    {
+      "template_key": "generic44.account_movements",
+      "product_line": "Generic44",
+      "document_type": "account_movements",
+      "locales": ["nl_BE", "fr_BE"],
+      "vintage_branch": "vintage_1074",
+      "lifecycle_stage": "feature-freeze",
+      "semver": "1.0.0",
+      "has_regdata": false,
+      "has_sidata": false,
+      "has_xmp": false,
+      "includes": [],
+      "notes": "Erft Generic23, enkel titel/code verschil"
+    },
+    {
+      "template_key": "boutique.regdata_ng",
+      "product_line": "_shared_boutique",
+      "document_type": "regdata",
+      "locales": ["nl_BE", "fr_BE"],
+      "vintage_branch": "vintage_1074",
+      "lifecycle_stage": "draft",
+      "semver": "0.1.0",
+      "has_regdata": true,
+      "has_sidata": true,
+      "has_xmp": false,
+      "includes": [],
+      "notes": "Sprint 2: gedeelde ng_xxx base voor Boutique_23, Evolis en Patronale_Life_Flexible. Eerste codes gemigreerd, rest volgt zelfde patroon."
+    },
+    {
+      "template_key": "short_term_cover.account_movements",
+      "product_line": "Short_Term_Cover",
+      "document_type": "account_movements",
+      "locales": ["nl_BE", "fr_BE"],
+      "vintage_branch": "vintage_1074",
+      "lifecycle_stage": "feature-freeze",
+      "semver": "1.0.0",
+      "has_regdata": false,
+      "has_sidata": false,
+      "has_xmp": false,
+      "includes": [],
+      "notes": "Sprint 2: gemigreerd naar de Life_Insurance movements base"
     }
   ],
-  "_note": "Sprint 1 toevoegingen: ESIS, AV, EID, loan_schedule (gefixed), offer_summary, agreement, account_movements, transaction. Sprint 3 zal de overige templates afdekken."
+  "_note": "Sprint 1: ESIS, AV, EID, loan_schedule (gefixed), offer_summary, agreement, account_movements, transaction. Sprint 2: SKM consolidatie (Generic21/23/44, Boutique REGData/SIData shared base, Short_Term_Cover). Sprint 3 zal de overige templates afdekken."
 }
