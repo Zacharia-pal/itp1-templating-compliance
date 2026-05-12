@@ -8,17 +8,19 @@
 import os
 import re
 import sys
+import json
 import requests
 
 JIRA = "https://patronale.atlassian.net"
 JIRA_USER = os.environ.get("JIRA_USER", "zacharia.janssen@patronale-life.be")
 JIRA_TOKEN = os.environ.get("JIRA_TOKEN")
 
-# transition ids per status (uit het PLVFIN workflow scheme)
-TR_DONE = "31"
-TR_TESTING = "41"
-
 KEY_RE = re.compile(r"feature/(PLVFIN-\d+)", re.IGNORECASE)
+
+
+def load_config(path="config/jsm_sync.example.json"):
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
 
 def ticket_from_branch(branch):
@@ -72,6 +74,9 @@ def main():
         print("JIRA_TOKEN ontbreekt")
         sys.exit(1)
 
+    cfg = load_config()
+    tr = cfg["transitions"]
+
     git_key = ticket_from_branch(branch)
     if not git_key:
         print("geen GIT ticket in branchnaam:", branch)
@@ -79,12 +84,12 @@ def main():
 
     print("merge van", branch, "-> ticket", git_key)
     comment(git_key, "PR gemerged: %s" % pr_url)
-    transition(git_key, TR_DONE)
+    transition(git_key, tr["done"])
 
     template_key = get_linked_template_ticket(git_key)
     if template_key:
         print("  gelinkt template ticket:", template_key, "-> Testing Template")
-        transition(template_key, TR_TESTING)
+        transition(template_key, tr["testing_template"])
     else:
         print("  geen gelinkt PLVFIN template ticket gevonden")
 

@@ -8,12 +8,18 @@
 
 import os
 import sys
+import json
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 import requests
 from jinja2 import Environment, FileSystemLoader
+
+
+def load_config(path="config/jsm_sync.example.json"):
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
 
 JIRA = "https://patronale.atlassian.net"
 JIRA_USER = os.environ.get("JIRA_USER", "zacharia.janssen@patronale-life.be")
@@ -23,10 +29,6 @@ SMTP_HOST = os.environ.get("SMTP_HOST", "smtp.office365.com")
 SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER = os.environ.get("SMTP_USER")
 SMTP_PASS = os.environ.get("SMTP_PASS")
-
-# wie de digest krijgt. TODO: uit een config halen ipv hardcoded
-RECIPIENTS = ["eduardo.de.almeida.raposo@patronale-life.be",
-              "erwin.geeraerts@patronale-life.be"]
 
 JQL = ('project = PLVFIN AND issuetype in ("VF Bug", "GIT", "New Feature") '
        'AND updated >= -1d ORDER BY updated DESC')
@@ -61,7 +63,7 @@ def render(lang, rows):
     return tpl.render(rows=rows, count=len(rows))
 
 
-def send(rows):
+def send(rows, recipients):
     if not SMTP_USER or not SMTP_PASS:
         print("geen SMTP creds, dry-run. %d tickets in digest." % len(rows))
         print(render("nl", rows)[:300])
@@ -70,7 +72,7 @@ def send(rows):
     msg = MIMEMultipart("alternative")
     msg["Subject"] = "vFinance template digest / %d wijzigingen" % len(rows)
     msg["From"] = SMTP_USER
-    msg["To"] = ", ".join(RECIPIENTS)
+    msg["To"] = ", ".join(recipients)
     # NL + FR in 1 mail, NL eerst
     body = render("nl", rows) + "<hr/>" + render("fr", rows)
     msg.attach(MIMEText(body, "html", "utf-8"))
@@ -78,19 +80,20 @@ def send(rows):
     with smtplib.SMTP(SMTP_HOST, SMTP_PORT) as s:
         s.starttls()
         s.login(SMTP_USER, SMTP_PASS)
-        s.sendmail(SMTP_USER, RECIPIENTS, msg.as_string())
-    print("digest verstuurd naar", RECIPIENTS)
+        s.sendmail(SMTP_USER, recipients, msg.as_string())
+    print("digest verstuurd naar", recipients)
 
 
 def main():
     if not JIRA_TOKEN:
         print("JIRA_TOKEN ontbreekt")
         sys.exit(1)
+    cfg = load_config()
     rows = fetch_changed()
     if not rows:
         print("geen wijzigingen in de laatste 24u, geen mail")
         return
-    send(rows)
+    send(rows, cfg["digest_recipients"])
 
 
 if __name__ == "__main__":

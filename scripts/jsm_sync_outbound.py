@@ -122,8 +122,8 @@ def main():
         created = gh_create_branch(branch, sha)
         if created:
             jira_comment(key, "Feature branch aangemaakt: %s (vanaf %s)" % (branch, vintage))
-            # transition id 21 = In Progress (hangt af van workflow scheme)
-            jira_transition(key, "21")
+            # transition-id komt nu uit de config ipv hardcoded
+            jira_transition(key, cfg["transitions"]["in_progress"])
 
 
 if __name__ == "__main__":
