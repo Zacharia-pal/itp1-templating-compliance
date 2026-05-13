@@ -1,0 +1,19 @@
+{
+  "_comment": "Fondsenlijst voor de ng_xxx REGData/SIData fiches. gen_ng_templates.py maakt hieruit de extends-bestanden per product en taal.",
+  "products": {
+    "REGData": ["Boutique_23", "Evolis", "Patronale_Life_Flexible"],
+    "SIData": ["Boutique_23", "Evolis", "Patronale_Life_Flexible"]
+  },
+  "funds": [
+    {"code": "ng_100", "name": "Patronale Global Equity", "isin": "BE0001234567", "sri": 5, "ongoing_costs": 0.0185},
+    {"code": "ng_101", "name": "Patronale Euro Bond", "isin": "BE0007654321", "sri": 3, "ongoing_costs": 0.0095, "duration": "6,2 jaar"},
+    {"code": "ng_102", "name": "Patronale Mixed Defensive", "isin": "BE0002345678", "sri": 3, "ongoing_costs": 0.0140},
+    {"code": "ng_103", "name": "Patronale Mixed Dynamic", "isin": "BE0003456789", "sri": 4, "ongoing_costs": 0.0160},
+    {"code": "ng_104", "name": "Patronale Euro Equity", "isin": "BE0004567890", "sri": 5, "ongoing_costs": 0.0175},
+    {"code": "ng_105", "name": "Patronale World Index", "isin": "BE0005678901", "sri": 4, "ongoing_costs": 0.0055},
+    {"code": "ng_106", "name": "Patronale Government Bond", "isin": "BE0006789012", "sri": 2, "ongoing_costs": 0.0070, "duration": "8,1 jaar"},
+    {"code": "ng_107", "name": "Patronale Real Estate", "isin": "BE0007890123", "sri": 5, "ongoing_costs": 0.0210},
+    {"code": "ng_108", "name": "Patronale Sustainable Equity", "isin": "BE0008901234", "sri": 5, "ongoing_costs": 0.0190},
+    {"code": "ng_109", "name": "Patronale Money Market", "isin": "BE0009012345", "sri": 1, "ongoing_costs": 0.0030}
+  ]
+}
