@@ -1,8 +1,9 @@
 {
   "meta": {
-    "version": "0.3.0",
+    "version": "1.0.0",
     "description": "Template Registry  - maps template keys to product lines, SKMs, and vFinance lifecycle stages",
-    "last_updated": "2026-05-08",
+    "last_updated": "2026-05-21",
+    "lifecycle_note": "Sprint 3 release: de vintage_1074 set is gevalideerd en gepromoot naar stable/release. CI bewaakt de template-validatie op elke push.",
     "schema": {
       "template_key": "Unique identifier for the template",
       "product_line": "Product family (e.g., Life_Insurance, NewHyp)",
@@ -426,5 +427,5 @@
       "notes": "Sprint 2: gemigreerd naar de Life_Insurance movements base"
     }
   ],
-  "_note": "Sprint 1: ESIS, AV, EID, loan_schedule (gefixed), offer_summary, agreement, account_movements, transaction. Sprint 2: SKM consolidatie (Generic21/23/44, Boutique REGData/SIData shared base, Short_Term_Cover). Sprint 3 zal de overige templates afdekken."
+  "_note": "Sprint 1: ESIS, AV, EID, loan_schedule (gefixed), offer_summary, agreement, account_movements, transaction. Sprint 2: SKM consolidatie (Generic21/23/44, Boutique REGData/SIData shared base, Short_Term_Cover). Sprint 3: ng-fiches gegenereerd, CI validatie, handover docs, release naar 1.0.0."
 }

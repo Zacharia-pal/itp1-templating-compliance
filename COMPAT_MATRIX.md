@@ -4,7 +4,7 @@
 
 Deze matrix toont welke templates compatibel zijn met welke vFinance-vintage. Een ✅ betekent dat de template volledig werkt op die vintage. Een ⚠️ betekent dat er kleine variabele-verschillen zijn die niet breaking zijn. Een ❌ betekent dat de template niet compatible is.
 
-**Status:** Sprint 2 afgerond - SKM consolidatie (Generic21/23/44 erven van een gedeelde base, Boutique REGData/SIData gedeelde ng-base, Short_Term_Cover movements naar Life_Insurance base). Sprint 3 dekt de overige templates en finaliseert.
+**Status:** Sprint 3 afgerond - ng-fiches gegenereerd uit de fondsenlijst, CI template-validatie actief, handover gedocumenteerd. De vintage_1074 set is gevalideerd en gepromoot naar release (registry 1.0.0).
 
 ---
 
