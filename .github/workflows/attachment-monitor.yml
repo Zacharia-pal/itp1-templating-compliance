@@ -1,0 +1,27 @@
+name: Attachment monitor
+
+# Verplaatst bijlagen > 400MB naar OneDrive. Elke 30 min.
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install deps
+        run: pip install requests
+
+      - name: scan grote bijlagen
+        env:
+          JIRA_USER: ${{ secrets.JIRA_USER }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          GRAPH_TOKEN: ${{ secrets.GRAPH_TOKEN }}
+        run: python scripts/attachment_monitor.py
