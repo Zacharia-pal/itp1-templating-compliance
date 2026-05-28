@@ -1,0 +1,33 @@
+ITP1 - Templating & Compliance - Zacharia Janssen
+Bewijsstukken / oplevering
+Academiejaar 2025-2026
+
+!! LET OP - SharePoint !!
+-------------------------
+Dirk vermeldde dat er per project een gedeelde SharePoint map is met de
+link in de projectwerk Wiki. Ik heb die link NIET teruggevonden in de Wiki,
+en ik vond ook NERGENS de credentials of toegang tot die SharePoint map.
+
+Daarom staan de bewijsstukken voorlopig hier in de Git repo (deze map).
+Zodra ik de juiste SharePoint-link en toegang krijg, verplaats ik alles
+daarheen. Graag de link/toegang doorgeven.
+
+Inhoud van deze map
+-------------------
+01_Groeiportfolio
+    Groeiportfolio v0 t/m v4 (PDF). v4 is de eindversie.
+    - v0/v1/v2: tot en met Sprint 1
+    - v3: na Sprint 2
+    - v4: na Sprint 3 (eindversie)
+
+02_Sprintdocumentatie
+    Sprintplanning, daily standups, retrospectives en status-mails per sprint
+    (Sprint 0 t/m 3), plus wiki_home als overzicht.
+
+03_Slotpresentatie
+    Slotpresentatie (PowerPoint).
+
+Niet in deze map
+----------------
+- De broncode is deze repo zelf (branch vintage_1074, gemerged naar main).
+- De uren-registratie staat in projectwerk.vives.be > Spent Time.
