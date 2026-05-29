@@ -1,0 +1,24 @@
+{# Generic agreement basis voor productafhankelijke overeenkomsten. #}
+{%- extends '_shared/_base_document.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block document_title %}
+    {% call html.render_title_table('') %}{% block agreement_title %}{% endblock %}{% endcall %}
+{% endblock %}
+
+{% block document_content %}
+    {% block parties %}
+        <h2>{% block parties_label %}{% endblock %}</h2>
+        <p>{% block lender_label %}{% endblock %}: {{ lender.name }}, {{ lender.address }}</p>
+        <p>{% block borrower_label %}{% endblock %}: {{ borrower.full_name }}, {{ borrower.address }}</p>
+    {% endblock %}
+
+    {% block clauses %}
+        <h2>{% block clauses_label %}{% endblock %}</h2>
+        {% block agreement_body %}{% endblock %}
+    {% endblock %}
+
+    {% block agreement_signatures %}
+        {% include 'includes/signatures.html' %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,31 @@
+{# Hulpmacros voor bedrag- en datumweergave per locale.
+   Belgi gebruikt komma als decimaalscheiding en punt als duizendtalscheiding. #}
+
+{%- macro be_amount(amount, decimals=2) -%}
+{%- if amount is not none -%}
+    {%- set formatted = '%.{}f'.format(decimals) | format(amount) -%}
+    {%- set parts = formatted.split('.') -%}
+    {%- set int_part = parts[0] -%}
+    {%- set dec_part = parts[1] if parts|length > 1 else '' -%}
+    {%- set chunks = [] -%}
+    {%- set tmp = int_part -%}
+    {%- if tmp.startswith('-') -%}{%- set tmp = tmp[1:] -%}{%- set sign = '-' -%}{%- else -%}{%- set sign = '' -%}{%- endif -%}
+    {%- for i in range(tmp|length, 0, -3) -%}
+        {%- set start = (i-3) if (i-3) > 0 else 0 -%}
+        {%- if chunks.append(tmp[start:i]) -%}{%- endif -%}
+    {%- endfor -%}
+    {{ sign }}{{ chunks|reverse|join('.') }}{%- if dec_part %},{{ dec_part }}{%- endif %}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro be_date(value, language='nl_BE') -%}
+{%- if value is not none -%}
+    {%- if language == 'nl_BE' -%}
+        {{ value|format_date('d MMMM yyyy', 'nl') }}
+    {%- elif language == 'fr_BE' -%}
+        {{ value|format_date('d MMMM yyyy', 'fr') }}
+    {%- else -%}
+        {{ value|format_date }}
+    {%- endif -%}
+{%- endif -%}
+{%- endmacro -%}

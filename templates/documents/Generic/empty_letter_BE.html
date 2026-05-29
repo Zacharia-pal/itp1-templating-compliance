@@ -1,16 +1,5 @@
-{%- import 'macros/html.html' as html with context -%}
-
-{% block html_head %}{% endblock %}
-
-{% call html.render_table(class="letter") %}
-    {% block subject %}{% endblock %}
-    <tr>
-        {% call html.render_td(colspan="2") %}
-            {% block letter_content %}{% endblock %}
-        {% endcall %}
-    </tr>
-{% endcall %}
-
-{% block letter_signature %}
-    {% include 'includes/signatures.html' %}
-{% endblock %}
+{# empty_letter_BE wijst nu door naar _shared/_base_letter zodat ESIS, agreements
+   en briefweergaven dezelfde structuur delen. Hierdoor verdwijnt duplicatie
+   tussen Generic en GenericLoan empty_letter en kunnen toekomstige producten
+   eenvoudig een eigen brief-variant bouwen door _base_letter te extenden. #}
+{%- extends '_shared/_base_letter.html' -%}

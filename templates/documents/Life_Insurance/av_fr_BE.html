@@ -1,0 +1,16 @@
+{%- extends 'documents/Generic/av_fr_BE.html' -%}
+
+{% block av_definitions %}
+{{ super() }}
+<dl>
+    <dt>Assure</dt><dd>La personne sur la vie de laquelle l'assurance est souscrite.</dd>
+    <dt>Prime</dt><dd>Le montant verse par le preneur d'assurance pour obtenir la couverture.</dd>
+    <dt>Reserve</dt><dd>L'avoir constitue au sein du contrat d'assurance.</dd>
+</dl>
+{% endblock %}
+
+{% block av_obligations %}
+<h2>4. Obligations specifiques a l'assurance-vie</h2>
+<p>Le preneur d'assurance paie la prime selon les modalites convenues.
+En cas de deces de l'assure, la prestation est versee au beneficiaire apres reception des pieces justificatives requises.</p>
+{% endblock %}

@@ -1,0 +1,23 @@
+{%- extends 'documents/Generic/certificate_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.CERT.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Certificat Boutique 23"/>
+{% endblock %}
+
+{% block cert_title %}Certificat Boutique 23{% endblock %}
+{% block cert_subtitle %}Assurance-vie branche 23 - formule boutique{% endblock %}
+{% block cert_number_label %}Numero de certificat{% endblock %}
+{% block packages_label %}Forfaits souscrits{% endblock %}
+{% block pkg_code %}Code{% endblock %}
+{% block pkg_name %}Nom{% endblock %}
+{% block pkg_premium %}Prime{% endblock %}
+
+{% block cert_intro %}
+<p>Nous confirmons l'inscription de {{ subscriber.full_name }} pour les forfaits Boutique 23 mentionnes ci-dessous.</p>
+{% endblock %}
+
+{% block cert_footer %}
+<p class="small">Ce certificat est valable a partir du {{ certificate.start_date | format_date }} et appartient au preneur d'assurance.</p>
+{% endblock %}

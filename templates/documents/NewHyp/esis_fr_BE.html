@@ -1,0 +1,28 @@
+{%- extends 'documents/NewHyp/esis_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.ESIS.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="ESIS - NewHyp"/>
+    <meta name="verbose-name" content="Fiche europeenne d'information standardisee"/>
+{% endblock %}
+
+{% block esis_title %}Fiche europeenne d'information standardisee (ESIS){% endblock %}
+{% block esis_subtitle %}Credit hypothecaire pour bien immobilier{% endblock %}
+{% block section_lender_title %}1. Preteur{% endblock %}
+{% block section_loan_title %}2. Caracteristiques du credit{% endblock %}
+{% block label_amount %}Montant du credit{% endblock %}
+{% block label_duration %}Duree{% endblock %}
+{% block label_months %}mois{% endblock %}
+{% block label_rate %}Taux debiteur{% endblock %}
+{% block label_taeg %}TAEG{% endblock %}
+{% block section_schedule_title %}3. Tableau d'amortissement{% endblock %}
+{% block section_warnings_title %}4. Avertissements importants{% endblock %}
+
+{% block warnings_content %}
+<ul>
+    <li>Un credit hypothecaire est un engagement de longue duree. Lisez attentivement toutes les conditions avant de signer.</li>
+    <li>Si vous ne respectez pas vos obligations, le preteur peut proceder a l'execution de la garantie immobiliere.</li>
+    <li>Le taux d'interet peut varier pendant la duree du credit si un taux variable a ete choisi.</li>
+</ul>
+{% endblock %}

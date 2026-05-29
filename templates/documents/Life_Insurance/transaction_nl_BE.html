@@ -1,0 +1,25 @@
+{%- extends '_shared/_base_letter.html' -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{% block html_head %}
+    {% set document_code = '%s.TXN.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Transactiebewijs"/>
+{% endblock %}
+
+{% block subject %}
+<tr><td colspan="2"><strong>Transactiebewijs</strong> {{ transaction.reference }}</td></tr>
+{% endblock %}
+
+{% block letter_content %}
+<p>Beste klant,</p>
+<p>Hierbij bevestigen wij de volgende transactie op uw polis {{ policy.number }}:</p>
+<table class="transaction">
+    <tr><td>Type</td><td>{{ transaction.type_label }}</td></tr>
+    <tr><td>Datum</td><td>{{ transaction.date | format_date }}</td></tr>
+    <tr><td>Bedrag</td><td>{{ fmt.be_amount(transaction.amount) }} EUR</td></tr>
+    <tr><td>Tegenrekening</td><td>{{ transaction.counter_account }}</td></tr>
+    <tr><td>Mededeling</td><td>{{ transaction.communication }}</td></tr>
+</table>
+<p>Met vriendelijke groeten</p>
+{% endblock %}

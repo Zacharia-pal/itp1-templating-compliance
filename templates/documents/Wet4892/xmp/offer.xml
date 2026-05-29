@@ -1,0 +1,8 @@
+{%- extends 'includes/xmp/xmp_base.xml' -%}
+
+{% block xmp_extra %}
+      <pl:productLine>Wet4892</pl:productLine>
+      <pl:documentType>offer_summary</pl:documentType>
+      <pl:offerReference>{{ offer.reference | default('') }}</pl:offerReference>
+      <pl:assetDecision>{{ asset.decision_path | default('') }}</pl:assetDecision>
+{% endblock %}

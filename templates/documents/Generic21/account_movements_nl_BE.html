@@ -1,0 +1,14 @@
+{# Generic21 (Tak 21) erft van Generic23. Verschil met Tak 23/44: de
+   invoice_state regel onderaan (kosten/taks) moet anders. Daarvoor de
+   invoice_state_override include in het movements_footer block. #}
+{%- extends 'documents/Generic23/account_movements_nl_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.MOV.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Rekeningbewegingen Generic 21"/>
+{% endblock %}
+
+{% block movements_footer %}
+    {% include 'documents/Generic21/includes/invoice_state_override.html' %}
+{% endblock %}

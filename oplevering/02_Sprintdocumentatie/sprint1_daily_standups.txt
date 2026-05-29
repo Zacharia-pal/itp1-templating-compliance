@@ -1,0 +1,116 @@
+# Sprint 1 - Daily Standups
+
+## Dinsdag 14 april
+
+**Wat heb ik gedaan?**
+Sprint 0 demo gegeven en retrospective geschreven (zaterdag 11 april). Sprint 1 backlog gerefined.
+
+**Wat ga ik vandaag doen?**
+Sprint 1 planning. Daarna Jinja base templates en shared macros opzetten, en starten met ESIS migratie voor NewHyp.
+
+**Blokkades?**
+Geen.
+
+---
+
+## Woensdag 15 april
+
+**Wat heb ik gedaan?**
+Jinja base templates en macros staan. NewHyp ESIS gemigreerd in NL en FR, met afgeleide varianten voor HypoSelect en Wet4892 via overerving.
+
+**Wat ga ik vandaag doen?**
+ESIS afronden waar nodig. AV (Algemene Voorwaarden) opzetten voor Generic + Life_Insurance + Credit_Insurance overrides. EID identiteitstemplates starten.
+
+**Blokkades?**
+Geen.
+
+---
+
+## Donderdag 16 april
+
+**Wat heb ik gedaan?**
+AV en EID gemigreerd. Lange dag voor analyse en migratie van de algemene voorwaarden teksten.
+
+**Wat ga ik vandaag doen?**
+XMP metadata XML-includes maken en in html_head ingehaakt krijgen. Loan schedule include opzetten met index detection.
+
+**Blokkades?**
+Geen, maar lange dag - probeer veel klaar te krijgen voor het weekend.
+
+---
+
+## Vrijdag 17 april
+
+**Wat heb ik gedaan?**
+XMP metadata af. Loan schedule include af.
+
+**Wat ga ik vandaag doen?**
+Loan schedule wrappers afmaken (NL/FR brieven). Index detection bug onderzoeken: FR-renders met gelokaliseerde bedragen falen. Offer summary, agreement, account_movements en certificate base allemaal afronden zodat de zware migratie deze week klaar is.
+
+**Blokkades?**
+Index detection is fragiel met gelokaliseerde bedragen. Plan: vergelijking op de ruwe numerieke waarde via index_percentage_raw.
+
+---
+
+## Maandag 20 april
+
+**Wat heb ik gedaan?**
+Vrijdag laat alles afgekregen voor Sprint 1; weekend niets gedaan.
+
+**Wat ga ik vandaag doen?**
+Korte dag - kleine bug in offer_summary FR opzoeken. De extends wijst naar de NL variant in plaats van naar de _BE basis.
+
+**Blokkades?**
+Geen, snelle fix.
+
+---
+
+## Dinsdag 21 april
+
+**Wat heb ik gedaan?**
+offer_summary FR-bug gefixed.
+
+**Wat ga ik vandaag doen?**
+Account_movements merge probleem afronden, kleine cleanup.
+
+**Blokkades?**
+Geen.
+
+---
+
+## Woensdag 22 april
+
+**Wat heb ik gedaan?**
+Cleanup en bug fix klaar.
+
+**Wat ga ik vandaag doen?**
+Registry update naar versie 0.2.0 en compatibiliteitsmatrix uitbreiden voor de Sprint 1 templates. Daarna refactor: Generic en GenericLoan empty_letter laten extenden van het nieuwe _shared/_base_letter.
+
+**Blokkades?**
+Geen.
+
+---
+
+## Donderdag 23 april
+
+**Wat heb ik gedaan?**
+Registry, matrix en refactor af.
+
+**Wat ga ik vandaag doen?**
+Niets gepland - afkoeldag, klein papierwerk voor projectwerk.
+
+**Blokkades?**
+Geen.
+
+---
+
+## Vrijdag 24 april
+
+**Wat heb ik gedaan?**
+Niks gisteren.
+
+**Wat ga ik vandaag doen?**
+Sprint 1 demo aan Eduardo en Erwin (kort, ~30 min). Status mail naar Eduardo opmaken.
+
+**Blokkades?**
+Geen.

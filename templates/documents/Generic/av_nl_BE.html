@@ -1,0 +1,60 @@
+{%- extends 'documents/Generic/av_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.AV.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Algemene Voorwaarden"/>
+    <meta name="verbose-name" content="Algemene Voorwaarden {{ product.name }}"/>
+{% endblock %}
+
+{% block av_title %}Algemene Voorwaarden{% endblock %}
+{% block av_product %}{{ product.name }}{% endblock %}
+{% block av_version %}Versie {{ av_version | default('2026.1') }} - geldig vanaf {{ av_valid_from | format_date }}{% endblock %}
+
+{% block av_intro %}
+<h2>1. Inleiding</h2>
+<p>Deze algemene voorwaarden regelen de rechten en plichten van de partijen in het kader van het hieronder omschreven product.
+De voorwaarden vormen samen met de bijzondere voorwaarden de overeenkomst tussen de klant en {{ lender.name | default('Patronale Life NV') }}.</p>
+{% endblock %}
+
+{% block av_definitions %}
+<h2>2. Definities</h2>
+<dl>
+    <dt>Klant</dt><dd>De natuurlijke persoon die het product onderschrijft.</dd>
+    <dt>Verzekeringnemer</dt><dd>Degene die de verzekeringsovereenkomst sluit.</dd>
+    <dt>Begunstigde</dt><dd>Degene aan wie de uitkering toekomt.</dd>
+    <dt>Polis</dt><dd>Het document dat de overeenkomst bevestigt.</dd>
+</dl>
+{% endblock %}
+
+{% block av_scope %}
+<h2>3. Toepassingsgebied</h2>
+<p>Deze voorwaarden zijn van toepassing op het product {{ product.name }} en gelden onverminderd dwingende wettelijke bepalingen.</p>
+{% endblock %}
+
+{% block av_obligations %}
+<h2>4. Verplichtingen</h2>
+<p>De klant verbindt er zich toe alle informatie correct en volledig mee te delen. {{ lender.name | default('Patronale Life NV') }} verbindt er zich toe het product te beheren conform deze voorwaarden.</p>
+{% endblock %}
+
+{% block av_termination %}
+<h2>5. Einde van de overeenkomst</h2>
+<p>De overeenkomst neemt een einde overeenkomstig de bijzondere voorwaarden of bij beeindiging volgens de wet.</p>
+{% endblock %}
+
+{% block av_complaints %}
+<h2>6. Klachten</h2>
+<p>Klachten kunnen schriftelijk gericht worden aan {{ complaints_address | default('klachten@patronale-life.be') }}.
+De Ombudsdienst van de Verzekeringen blijft eveneens bevoegd.</p>
+{% endblock %}
+
+{% block av_data_protection %}
+<h2>7. Bescherming van persoonsgegevens</h2>
+<p>De verwerking van persoonsgegevens gebeurt conform de Algemene Verordening Gegevensbescherming.
+Het volledige privacybeleid is terug te vinden op de website van {{ lender.name | default('Patronale Life NV') }}.</p>
+{% endblock %}
+
+{% block av_jurisdiction %}
+<h2>8. Toepasselijk recht</h2>
+<p>Op deze overeenkomst is Belgisch recht van toepassing. De rechtbanken van het arrondissement van de zetel van {{ lender.name | default('Patronale Life NV') }} zijn bevoegd.</p>
+{% endblock %}

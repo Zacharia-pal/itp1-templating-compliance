@@ -9,6 +9,10 @@
 .processed_attachments
 .git-sync-state
 
+# Python
+__pycache__/
+*.pyc
+
 # OS files
 .DS_Store
 Thumbs.db

@@ -1,0 +1,20 @@
+{# Gedeeld basisbestand voor brief-achtige documenten.
+   Gebruikt door empty_letter, ESIS-brieven en agreement letters. #}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block html_head %}{% endblock %}
+
+{% call html.render_table(class="letter") %}
+    {% block subject %}{% endblock %}
+    <tr>
+        {% call html.render_td(colspan="2") %}
+            {% block letter_main %}
+                {% block letter_content %}{% endblock %}
+            {% endblock %}
+        {% endcall %}
+    </tr>
+{% endcall %}
+
+{% block letter_signature %}
+    {% include 'includes/signatures.html' %}
+{% endblock %}

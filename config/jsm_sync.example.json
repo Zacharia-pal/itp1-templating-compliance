@@ -1,0 +1,31 @@
+{
+  "jira": {
+    "base_url": "https://patronale.atlassian.net",
+    "user": "zacharia.janssen@patronale-life.be",
+    "project": "PLVFIN",
+    "git_request_type": "GIT",
+    "poll_interval_minutes": 5,
+    "_comment": "GIT = service request type voor template wijzigingen. Token via env JIRA_TOKEN."
+  },
+  "github": {
+    "owner": "Zacharia-pal",
+    "repo": "itp1-templating-compliance",
+    "default_vintage": "vintage_1074",
+    "_comment": "PAT via env GH_TOKEN. default_vintage als ticket geen vintage label heeft."
+  },
+  "transitions": {
+    "_comment": "transition-ids uit het PLVFIN workflow scheme. Aanpassen als het scheme wijzigt.",
+    "in_progress": "21",
+    "done": "31",
+    "testing_template": "41"
+  },
+  "digest_recipients": [
+    "eduardo.de.almeida.raposo@patronale-life.be",
+    "erwin.geeraerts@patronale-life.be"
+  ],
+  "vintage_labels": {
+    "v977": "vintage_977",
+    "v1074": "vintage_1074",
+    "v1210": "vintage_1074"
+  }
+}

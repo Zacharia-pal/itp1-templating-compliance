@@ -1,0 +1,18 @@
+{%- extends 'documents/NewHyp/esis_nl_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.ESIS.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="ESIS - Wet 4892"/>
+    <meta name="verbose-name" content="ESIS conform Wet 4892"/>
+{% endblock %}
+
+{% block esis_subtitle %}Hypothecair krediet conform Wet 4892{% endblock %}
+
+{% block section_warnings_title %}4. Specifieke waarschuwingen Wet 4892{% endblock %}
+
+{% block warnings_content %}
+{{ super() }}
+<p><strong>Bijkomende verplichting onder Wet 4892:</strong>
+de kredietgever heeft een bijzondere informatie- en zorgplicht. De kredietnemer beschikt over een bedenktijd zoals bepaald in de wet.</p>
+{% endblock %}

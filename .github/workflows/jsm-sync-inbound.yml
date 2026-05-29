@@ -1,0 +1,29 @@
+name: JSM sync inbound
+
+# Koppelt een gemergede PR terug naar JIRA.
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  inbound:
+    # enkel als de PR echt gemerged is, niet bij gewone close
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install deps
+        run: pip install requests
+
+      - name: terugkoppelen naar JIRA
+        env:
+          JIRA_USER: ${{ secrets.JIRA_USER }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          PR_HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: python scripts/jsm_sync_inbound.py

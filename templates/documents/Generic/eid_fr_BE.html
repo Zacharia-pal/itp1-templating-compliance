@@ -1,0 +1,19 @@
+{%- extends 'documents/Generic/eid_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.EID.fr_BE'|format(productcode) %}
+    {% include 'includes/html_head_fr_BE.html' %}
+    <meta name="print-title" content="Document d'identite"/>
+    <meta name="verbose-name" content="Document d'identite annexe a la police"/>
+{% endblock %}
+
+{% block eid_title %}Donnees d'identite{% endblock %}
+{% block eid_intro %}
+<p>Ce document confirme l'identite des personnes mentionnees ci-dessous, dans le cadre du produit {{ product.name }}.</p>
+{% endblock %}
+{% block label_role %}Role{% endblock %}
+{% block label_name %}Nom{% endblock %}
+{% block label_birth %}Naissance{% endblock %}
+{% block label_national_nr %}Numero de registre national{% endblock %}
+{% block label_address %}Adresse{% endblock %}
+{% block label_id_doc %}Piece d'identite{% endblock %}

@@ -1,0 +1,28 @@
+{%- extends 'documents/NewHyp/esis_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.ESIS.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="ESIS - NewHyp"/>
+    <meta name="verbose-name" content="Europees gestandaardiseerd informatieblad"/>
+{% endblock %}
+
+{% block esis_title %}Europees gestandaardiseerd informatieblad (ESIS){% endblock %}
+{% block esis_subtitle %}Hypothecair krediet voor onroerend goed{% endblock %}
+{% block section_lender_title %}1. Kredietgever{% endblock %}
+{% block section_loan_title %}2. Kenmerken van het krediet{% endblock %}
+{% block label_amount %}Kredietbedrag{% endblock %}
+{% block label_duration %}Looptijd{% endblock %}
+{% block label_months %}maanden{% endblock %}
+{% block label_rate %}Debetrentevoet{% endblock %}
+{% block label_taeg %}JKP (TAEG){% endblock %}
+{% block section_schedule_title %}3. Aflossingsplan{% endblock %}
+{% block section_warnings_title %}4. Belangrijke waarschuwingen{% endblock %}
+
+{% block warnings_content %}
+<ul>
+    <li>Een hypothecair krediet is een langdurige verplichting. Lees alle voorwaarden zorgvuldig door voordat u tekent.</li>
+    <li>Indien u uw verplichtingen niet nakomt, kan de kredietgever overgaan tot uitwinning van de onroerende zekerheid.</li>
+    <li>De rentevoet kan tijdens de looptijd wijzigen indien een variabele rente werd gekozen.</li>
+</ul>
+{% endblock %}

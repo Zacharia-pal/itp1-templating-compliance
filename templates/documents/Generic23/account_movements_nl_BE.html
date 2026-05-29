@@ -1,0 +1,9 @@
+{# Generic23 (Tak 23) rekeningbewegingen. Deelt nu de Life_Insurance basis,
+   net zoals Boutique_23 al deed. Enkel print-title en documentcode verschillen. #}
+{%- extends 'documents/Life_Insurance/account_movements_nl_BE.html' -%}
+
+{% block html_head %}
+    {% set document_code = '%s.MOV.nl_BE'|format(productcode) %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Rekeningbewegingen Generic 23"/>
+{% endblock %}

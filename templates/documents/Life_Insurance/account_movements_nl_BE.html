@@ -1,0 +1,48 @@
+{%- extends '_shared/_base_letter.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{% block html_head %}
+    {% set document_code = '%s.MOV.nl_BE'|format(productcode) %}
+    {% set xmp_template = 'documents/Life_Insurance/xmp/contract.xml' %}
+    {% include 'includes/html_head_nl_BE.html' %}
+    <meta name="print-title" content="Rekeningbewegingen"/>
+{% endblock %}
+
+{% block subject %}
+<tr><td colspan="2"><strong>Rekeningbewegingen</strong> voor polis {{ policy.number }} - {{ period_from | format_date }} tot {{ period_to | format_date }}</td></tr>
+{% endblock %}
+
+{% block letter_content %}
+<p>Beste klant,</p>
+<p>Hieronder een overzicht van de bewegingen op uw verzekeringsrekening.</p>
+
+<table class="movements" width="100%">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Omschrijving</th>
+            <th>Type</th>
+            <th class="amount">Bedrag</th>
+            <th class="amount">Saldo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%- for mv in movements %}
+        <tr>
+            <td>{{ mv.date | format_date }}</td>
+            <td>{{ mv.description }}</td>
+            <td>{{ mv.type_label }}</td>
+            <td class="amount">{{ fmt.be_amount(mv.amount) }}</td>
+            <td class="amount">{{ fmt.be_amount(mv.balance) }}</td>
+        </tr>
+        {%- endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Eindsaldo</td>
+            <td class="amount" colspan="2">{{ fmt.be_amount(closing_balance) }} EUR</td>
+        </tr>
+    </tfoot>
+</table>
+{% endblock %}

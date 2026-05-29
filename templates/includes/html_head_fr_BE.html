@@ -28,6 +28,10 @@
 
 <meta name="print-header" content="{{ document_code | append_locale() }}.{{ templates_revision() }} - {{ now | format_datetime }}"/>
 
+{%- if xmp_template %}
+<meta name="print-xmp" content="{% include xmp_template %}"/>
+{%- endif %}
+
 {%- if invalidating_text %}
 <meta name="print-background-class" content="invalidating-text">
 <meta name="print-background" content="{{ invalidating_text }}">

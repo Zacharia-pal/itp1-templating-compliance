@@ -1,0 +1,40 @@
+{# Generic certificate basis: voorpagina, pakketoverzicht en footer.
+   Wordt gebruikt voor levensverzekering, kredietverzekering en boutique. #}
+{%- extends '_shared/_base_document.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block coverpage %}
+<div class="coverpage cert-cover">
+    <h1>{% block cert_title %}{% endblock %}</h1>
+    <p class="cert-subtitle">{% block cert_subtitle %}{% endblock %}</p>
+    <p>{% block cert_number_label %}{% endblock %}: {{ certificate.number }}</p>
+</div>
+{% endblock %}
+
+{% block document_content %}
+    {% block cert_intro %}{% endblock %}
+
+    {% block packages %}
+        <h2>{% block packages_label %}{% endblock %}</h2>
+        <table class="cert-packages" width="100%">
+            <thead>
+                <tr>
+                    <th>{% block pkg_code %}{% endblock %}</th>
+                    <th>{% block pkg_name %}{% endblock %}</th>
+                    <th>{% block pkg_premium %}{% endblock %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%- for pkg in certificate.packages %}
+                <tr>
+                    <td>{{ pkg.code }}</td>
+                    <td>{{ pkg.name }}</td>
+                    <td>{{ pkg.premium | format_currency }}</td>
+                </tr>
+                {%- endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
+
+    {% block cert_footer %}{% endblock %}
+{% endblock %}

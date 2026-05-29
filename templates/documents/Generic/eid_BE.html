@@ -1,0 +1,41 @@
+{# Identiteitsdocument basis. Toont gegevens van de natuurlijke personen
+   verbonden aan een polis of contract. #}
+{%- extends '_shared/_base_document.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block document_title %}
+    {% call html.render_title_table('') %}{% block eid_title %}{% endblock %}{% endcall %}
+{% endblock %}
+
+{% block document_content %}
+    {% block eid_intro %}{% endblock %}
+    {% for person in persons %}
+        <table class="eid-person" width="100%">
+            <tr>
+                <td class="label" width="35%">{% block label_role %}{% endblock %}</td>
+                <td>{{ person.role }}</td>
+            </tr>
+            <tr>
+                <td class="label">{% block label_name %}{% endblock %}</td>
+                <td>{{ person.full_name }}</td>
+            </tr>
+            <tr>
+                <td class="label">{% block label_birth %}{% endblock %}</td>
+                <td>{{ person.birth_date|format_date }} - {{ person.birth_place }}</td>
+            </tr>
+            <tr>
+                <td class="label">{% block label_national_nr %}{% endblock %}</td>
+                <td>{{ person.national_number }}</td>
+            </tr>
+            <tr>
+                <td class="label">{% block label_address %}{% endblock %}</td>
+                <td>{{ person.address }}</td>
+            </tr>
+            <tr>
+                <td class="label">{% block label_id_doc %}{% endblock %}</td>
+                <td>{{ person.id_document.type }} {{ person.id_document.number }} ({{ person.id_document.issued_at|format_date }})</td>
+            </tr>
+        </table>
+        <br>
+    {% endfor %}
+{% endblock %}

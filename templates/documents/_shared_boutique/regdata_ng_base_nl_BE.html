@@ -1,0 +1,18 @@
+{# Gedeelde REGData basis voor de ng_xxx fondsfiches.
+   Boutique_23, Evolis en Patronale_Life_Flexible delen deze structuur.
+   Per ng-code wordt enkel fondsnaam, code, ISIN en eventueel extra_rows
+   overschreven. SIData gebruikt dezelfde aanpak (zie sidata_ng_base). #}
+{%- import 'macros/html.html' as html with context -%}
+
+{% block html_head %}
+    {% include 'includes/html_head_nl_BE.html' %}
+{% endblock %}
+
+{% call html.render_table(class="regdata") %}
+    <tr><td class="label">Fonds</td><td>{% block fund_name %}{% endblock %}</td></tr>
+    <tr><td class="label">Fondscode</td><td>{% block fund_code %}{% endblock %}</td></tr>
+    <tr><td class="label">ISIN</td><td>{% block isin %}{% endblock %}</td></tr>
+    <tr><td class="label">Fondsbeheerder</td><td>{% block manager %}{{ fund_manager|default('-') }}{% endblock %}</td></tr>
+    <tr><td class="label">Compartiment</td><td>{% block compartment %}{{ compartment|default('-') }}{% endblock %}</td></tr>
+    {% block extra_rows %}{% endblock %}
+{% endcall %}
