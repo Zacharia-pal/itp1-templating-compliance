@@ -1,0 +1,25 @@
+{%- extends '_shared/_base_letter.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{# R148 localization-refactor: 1 template i.p.v. aparte _nl_BE/_fr_BE bestanden.
+   De dossiertaal komt van de recipient via de from_list-selector, met nl_BE als default.
+   De taalspecifieke head, subject en body worden dynamisch geincludeerd. #}
+{% set language = recipient.language | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
+
+{% block html_head %}
+    {% set document_code = '%s.MOV.%s' | format(productcode, language) %}
+    {% set xmp_template = 'documents/Life_Insurance/xmp/contract.xml' %}
+    {% include 'includes/html_head_%s.html' | format(language) %}
+    {% block movements_title %}
+    <meta name="print-title" content="{% if language == 'fr_BE' %}Mouvements de compte{% else %}Rekeningbewegingen{% endif %}"/>
+    {% endblock %}
+{% endblock %}
+
+{% block subject %}
+    {% include 'documents/Life_Insurance/_movements_subject_%s.html' | format(language) %}
+{% endblock %}
+
+{% block letter_content %}
+    {% include 'documents/Life_Insurance/_movements_body_%s.html' | format(language) %}
+{% endblock %}

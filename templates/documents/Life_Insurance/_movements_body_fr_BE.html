@@ -1,0 +1,32 @@
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+<p>Cher client,</p>
+<p>Vous trouverez ci-dessous un releve des mouvements sur votre compte d'assurance.</p>
+
+<table class="movements" width="100%">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Libelle</th>
+            <th>Type</th>
+            <th class="amount">Montant</th>
+            <th class="amount">Solde</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%- for mv in movements %}
+        <tr>
+            <td>{{ mv.date | format_date }}</td>
+            <td>{{ mv.description }}</td>
+            <td>{{ mv.type_label }}</td>
+            <td class="amount">{{ fmt.be_amount(mv.amount) }}</td>
+            <td class="amount">{{ fmt.be_amount(mv.balance) }}</td>
+        </tr>
+        {%- endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">Solde final</td>
+            <td class="amount" colspan="2">{{ fmt.be_amount(closing_balance) }} EUR</td>
+        </tr>
+    </tfoot>
+</table>
