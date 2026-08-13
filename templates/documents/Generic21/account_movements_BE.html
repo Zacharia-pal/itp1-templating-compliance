@@ -1,0 +1,14 @@
+{%- extends 'documents/Generic23/account_movements_BE.html' -%}
+
+{# Generic21 (Tak 21) erft van Generic23 en voegt de Tak 21-voet toe
+   (gewaarborgde rentevoet + premietaks) via het movements_footer block.
+   Dat block bestaat nu in de base (zat er vroeger niet, dus deze voet
+   rendorde voordien nooit). #}
+{% block movements_title %}
+{% set language = recipient.language | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
+<meta name="print-title" content="{% if language == 'fr_BE' %}Mouvements de compte Generic 21{% else %}Rekeningbewegingen Generic 21{% endif %}"/>
+{% endblock %}
+
+{% block movements_footer %}
+    {% include 'documents/Generic21/includes/invoice_state_override.html' %}
+{% endblock %}

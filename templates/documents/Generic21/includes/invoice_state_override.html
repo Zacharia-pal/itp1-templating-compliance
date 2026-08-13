@@ -1,10 +1,12 @@
 {# Tak 21 specifieke voet: toont de gewaarborgde rentevoet en de taks op de
-   premie apart. Tak 23/44 hebben dit niet (geen gewaarborgd rendement). #}
+   premie apart. Tak 23/44 hebben dit niet (geen gewaarborgd rendement).
+   R148: taal via from_list zodat ook de FR-versie correct is. #}
+{% set language = recipient.language | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
 <tr>
     <td colspan="2" class="invoice-state">
         {% if guaranteed_rate is defined %}
-            <span>Gewaarborgde rentevoet: {{ guaranteed_rate|format_percentage }}</span>
+            <span>{% if language == 'fr_BE' %}Taux garanti{% else %}Gewaarborgde rentevoet{% endif %}: {{ guaranteed_rate|format_percentage }}</span>
         {% endif %}
-        <span>Premietaks: {{ premium_tax|default(0)|format_currency }}</span>
+        <span>{% if language == 'fr_BE' %}Taxe sur la prime{% else %}Premietaks{% endif %}: {{ premium_tax|default(0)|format_currency }}</span>
     </td>
 </tr>

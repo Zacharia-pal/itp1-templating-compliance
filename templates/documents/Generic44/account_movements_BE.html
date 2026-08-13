@@ -1,0 +1,8 @@
+{%- extends 'documents/Generic23/account_movements_BE.html' -%}
+
+{# Generic44 (Tak 44) erft van Generic23. Cosmetisch identiek aan Tak 23,
+   enkel de titel verschilt (bevestigd met Erwin 29/4). #}
+{% block movements_title %}
+{% set language = recipient.language | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
+<meta name="print-title" content="{% if language == 'fr_BE' %}Mouvements de compte Generic 44{% else %}Rekeningbewegingen Generic 44{% endif %}"/>
+{% endblock %}
