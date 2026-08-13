@@ -1,10 +1,15 @@
+{#- R148: convert_custom_image is verwijderd in FF-148. De handtekening komt nu uit
+    een DB-setting (NOTIFICATION_SIGNATURE, of HYPO_INVOICE_SIGNATURE voor hypo-facturen)
+    via get_setting, en convert_stored_image zet de ruwe base64 om (met prefix). -#}
 {%- if signatures -%}
 <table class="signatures" width="100%">
     <tr>
         {%- for sig in signatures -%}
         <td width="{{ (100 / signatures|length)|int }}%" valign="top">
-            {%- if sig.image -%}
-            <img src="{{ sig.image|convert_custom_image }}" style="max-height: 60px;"/>
+            {%- set signature_key = sig.signature_key | default('NOTIFICATION_SIGNATURE') -%}
+            {%- set signature_image = signature_key | get_setting(settings) -%}
+            {%- if signature_image -%}
+            <img src="{{ signature_image|convert_stored_image }}" style="max-height: 60px;"/>
             <br>
             {%- endif -%}
             <strong>{{ sig.name }}</strong><br>
