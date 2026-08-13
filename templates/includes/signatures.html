@@ -4,7 +4,7 @@
         {%- for sig in signatures -%}
         <td width="{{ (100 / signatures|length)|int }}%" valign="top">
             {%- if sig.image -%}
-            <img src="{{ sig.image|convert_stored_image }}" style="max-height: 60px;"/>
+            <img src="{{ sig.image|convert_custom_image }}" style="max-height: 60px;"/>
             <br>
             {%- endif -%}
             <strong>{{ sig.name }}</strong><br>
