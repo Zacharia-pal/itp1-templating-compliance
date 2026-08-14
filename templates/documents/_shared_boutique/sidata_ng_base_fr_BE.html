@@ -6,9 +6,11 @@
     {% include 'includes/html_head_fr_BE.html' %}
 {% endblock %}
 
+{# Frais courants: format_percentage is locale-aware (get_locale), dus in fr_BE
+   verschijnt de komma-decimaal automatisch. SRI-term = de officiele KID-benaming. #}
 {% call html.render_table(class="sidata") %}
     <tr><td class="label">Fonds</td><td>{% block fund_name %}{% endblock %}</td></tr>
-    <tr><td class="label">Classe de risque (SRI)</td><td>{% block sri %}{{ sri_class|default('-') }}{% endblock %}</td></tr>
-    <tr><td class="label">Frais courants</td><td>{% block ongoing_costs %}{{ ongoing_costs|default(0)|format_percentage }}{% endblock %}</td></tr>
+    <tr><td class="label">Indicateur synthetique de risque (SRI)</td><td>{% block sri %}{{ sri_class|default('-') }}{% endblock %}</td></tr>
+    <tr><td class="label">Frais courants annuels</td><td>{% block ongoing_costs %}{{ ongoing_costs|default(0)|format_percentage }}{% endblock %}</td></tr>
     {% block extra_rows %}{% endblock %}
 {% endcall %}
