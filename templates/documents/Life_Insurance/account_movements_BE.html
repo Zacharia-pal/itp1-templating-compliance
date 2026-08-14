@@ -8,7 +8,11 @@
    idioom in custom_macros.html en _shared/macros_currency.html.
    Het movements_footer block laat producten (bv. Tak 21) een extra voetregel
    toevoegen binnen de tfoot. #}
-{% set language = recipient.language | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
+{#- Taal-router (US-06): de dossiertaal komt van de PRIMAIRE rolhouder (eerste rol),
+    niet van de gesorteerd-eerste recipient. Zie docs/language-router-gotcha.md. -#}
+{% set primary_role = roles | first if roles else none %}
+{% set language = (primary_role.language if primary_role and primary_role.language
+                   else recipient.language) | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
 
 {% block html_head %}
     {% set document_code = '%s.MOV.%s' | format(productcode, language) %}
