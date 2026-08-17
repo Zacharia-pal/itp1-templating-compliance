@@ -52,13 +52,39 @@ Secrets staan in de repo settings: `JIRA_USER`, `JIRA_TOKEN`, `GH_PAT`,
 staan in `config/jsm_sync.example.json` en moeten mee als het PLVFIN workflow
 scheme wijzigt.
 
+## R148 / FF-148 migratie (localization + fixes)
+
+De brieflaag is gemigreerd voor vFinance release 148 (FF-148 -> Release-2):
+
+- **Localization-refactor.** De account_movements-brieven gebruiken 1 unified template
+  (`documents/Life_Insurance/account_movements_BE.html`) met de `from_list`-taalselector i.p.v.
+  aparte `_nl_BE`/`_fr_BE` bestanden. Life_Insurance is de base; Boutique_23, Generic21/23/44 en
+  Short_Term_Cover zijn routers die enkel de titel (en Tak 21 de voet) overschrijven. De
+  taalspecifieke tekst zit in taalconditionelen, conform het bestaande codebase-idioom.
+  De oude taalbestanden blijven staan tot na de render-test; opkuisen (Fase E) gebeurt pas na
+  akkoord van de opdrachtgever.
+- **Taal-router.** De dossiertaal komt van de primaire rolhouder (eerste rol), niet van de
+  gesorteerd-eerste recipient. Zie `docs/language-router-gotcha.md`.
+- **Handtekening-filter.** `convert_custom_image` is in FF-148 verwijderd; de handtekening komt
+  nu uit een DB-setting via `get_setting` + `convert_stored_image` (`NOTIFICATION_SIGNATURE`,
+  of `HYPO_INVOICE_SIGNATURE` voor hypo-facturen).
+- **FR SIData-base.** Er is nu een aparte `sidata_ng_base_fr_BE.html`; de generator kiest per
+  locale de juiste base, dus de FR-fiches vallen niet langer terug op de NL-base.
+- **CI.** `validate_templates.py` valideert NL en FR en faalt op verwijderde FF-148 filters
+  (`convert_custom_image`, `format_role`, `format_asset_feature`, `_get_recipient_data`).
+
+Tak 21-detail: het `movements_footer` block (gewaarborgde rentevoet + premietaks) zat vroeger
+niet in de base, waardoor die voet nooit rendorde. Dat block bestaat nu en de voet is tweetalig.
+
 ## Open punten
 
+- De **oude `_nl_BE`/`_fr_BE` account_movements-bestanden** staan er nog naast de unified
+  templates. Ze mogen weg na een render-test die de unified output bevestigt (Fase E, na go).
+- Het unified from_list-patroon is uitgerold op de account_movements-familie. De **overige
+  notificaties** volgen hetzelfde patroon maar zijn nog niet allemaal omgezet.
 - De **attachment monitor** is functioneel klaar (incl. upload session voor
   bestanden > 250MB) maar staat bewust nog NIET live. Hij verwijdert bijlagen
   in productie-JIRA, dus dat zetten we pas aan na expliciete go van Erwin en op
   een eigen service-account ipv een persoonlijk token.
-- Voor SIData bestaat voorlopig enkel een NL base; de FR fiches vallen daarop
-  terug. Een aparte FR base is nog op te zetten.
 - De vintage_977 compatibiliteit is bewust beperkt (zie matrix). Die oude
   vintage is bevroren.
