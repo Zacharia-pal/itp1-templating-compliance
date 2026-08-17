@@ -8,12 +8,23 @@
 # zo meteen op ipv pas bij het genereren.
 
 import os
+import re
 import sys
 
 from jinja2 import Environment, FileSystemLoader, TemplateSyntaxError
 from jinja2 import meta
 
 ROOT = "templates"
+
+# Filters die in FF-148 verwijderd of hernoemd zijn. Komen ze nog voor in een
+# template, dan geeft dat op FF-148 een render-crash (UndefinedError). De CI
+# vangt ze zo vroeg i.p.v. pas bij het genereren.
+REMOVED_FILTERS = [
+    "convert_custom_image",   # -> get_setting + convert_stored_image (R148)
+    "format_role",            # -> display_role
+    "format_asset_feature",   # -> display_asset_feature
+    "_get_recipient_data",    # -> recipient.address_data
+]
 
 
 def all_templates(env):
@@ -40,6 +51,11 @@ def check(env, name):
             continue
         if ref not in known:
             problems.append("verwijst naar onbestaande template: %s" % ref)
+
+    # verwijderde FF-148 filters opsporen (bv. code|convert_custom_image)
+    for filt in REMOVED_FILTERS:
+        if re.search(r"\|\s*%s\b" % re.escape(filt), src):
+            problems.append("gebruikt verwijderde FF-148 filter: %s" % filt)
     return problems
 
 
