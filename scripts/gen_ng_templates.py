@@ -29,9 +29,9 @@ def reg_template(fund, locale):
 
 
 def si_template(fund, locale):
-    # sidata base bestaat voorlopig enkel in NL, FR valt voorlopig terug op
-    # de NL base. TODO: aparte FR sidata base in sprint 3 cleanup
-    base = "%s/sidata_ng_base_nl_BE.html" % SHARED
+    # per locale de juiste base: sinds R148 bestaat er ook een FR sidata base,
+    # dus FR valt niet langer terug op de NL base.
+    base = "%s/sidata_ng_base_%s.html" % (SHARED, locale)
     out = "{%%- extends '%s' -%%}\n\n" % base
     out += "{%% block fund_name %%}%s{%% endblock %%}\n" % fund["name"]
     out += "{%% block sri %%}%s{%% endblock %%}\n" % fund["sri"]

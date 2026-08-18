@@ -1,0 +1,5 @@
+{% extends '_shared/_base_letter.html' %}
+{% block letter_content %}
+  {# Demonstratie: convert_custom_image is in FF-148 verwijderd - de CI hoort dit te vangen #}
+  <img src="{{ signature | convert_custom_image }}">
+{% endblock %}

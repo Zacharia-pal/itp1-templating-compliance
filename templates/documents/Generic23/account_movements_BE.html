@@ -1,0 +1,7 @@
+{%- extends 'documents/Life_Insurance/account_movements_BE.html' -%}
+
+{# Generic23 (Tak 23) deelt de movements-base, enkel een eigen print-title. #}
+{% block movements_title %}
+{% set language = recipient.language | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
+<meta name="print-title" content="{% if language == 'fr_BE' %}Mouvements de compte Generic 23{% else %}Rekeningbewegingen Generic 23{% endif %}"/>
+{% endblock %}
