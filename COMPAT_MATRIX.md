@@ -6,6 +6,8 @@ Deze matrix toont welke templates compatibel zijn met welke vFinance-vintage. Ee
 
 **Status:** Sprint 3 afgerond - ng-fiches gegenereerd uit de fondsenlijst, CI template-validatie actief, handover gedocumenteerd. De vintage_1074 set is gevalideerd en gepromoot naar release (registry 1.0.0).
 
+**R148 / FF-148 migratie (herexamensprint):** de account_movements-brieflaag is omgezet naar 1 unified template met de from_list-taalselector (registry 2.0.0 voor die entries), de handtekening-filter en de taal-router zijn gefixt, en er is een aparte FR SIData-base. De account_movements-templates zijn NL+FR getest en CI-gevalideerd op vintage_1074.
+
 ---
 
 ## Document Templates

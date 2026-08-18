@@ -1,0 +1,52 @@
+{# R148 Wet 4892 kaderovereenkomst-notificatie.
+   Unified template: de dossiertaal komt via de from_list-selector (default nl_BE).
+   Vormt de volledige kredietovereenkomst door de Bijzondere Voorwaarden, de Algemene
+   Voorwaarden (dynamische include - dit was de ontbrekende include) en het aflossingsplan
+   samen te brengen. De handtekeningen komen uit document_footer (signatures.html). #}
+{%- extends '_shared/_base_document.html' -%}
+{%- import 'macros/html.html' as html with context -%}
+{%- import '_shared/macros_currency.html' as fmt with context -%}
+
+{% set language = recipient.language | from_list(['nl_BE', 'fr_BE'], 'nl_BE') %}
+
+{% block html_head %}
+    {% set document_code = '%s.KADER.%s' | format(productcode, language) %}
+    {% set xmp_template = 'documents/Wet4892/xmp/offer.xml' %}
+    {% include 'includes/html_head_%s.html' | format(language) %}
+    <meta name="print-title" content="{% if language == 'fr_BE' %}Contrat-cadre de credit hypothecaire{% else %}Kaderovereenkomst hypothecair krediet{% endif %}"/>
+{% endblock %}
+
+{% block document_title %}
+    {% call html.render_title_table('') %}
+    {%- if language == 'fr_BE' -%}Contrat-cadre de credit hypothecaire (Loi 4892)
+    {%- else -%}Kaderovereenkomst hypothecair krediet (Wet 4892){%- endif -%}
+    {% endcall %}
+{% endblock %}
+
+{% block document_content %}
+    {% block bijzondere_voorwaarden %}
+    <h2>{% if language == 'fr_BE' %}Conditions particulieres{% else %}Bijzondere Voorwaarden{% endif %}</h2>
+    <table class="agreement-parties" width="100%">
+        <tr><td class="label">{% if language == 'fr_BE' %}Preteur{% else %}Kredietgever{% endif %}</td>
+            <td>{{ lender.name }}, {{ lender.address }}</td></tr>
+        <tr><td class="label">{% if language == 'fr_BE' %}Emprunteur{% else %}Kredietnemer{% endif %}</td>
+            <td>{{ borrower.full_name }}, {{ borrower.address }}</td></tr>
+        <tr><td class="label">{% if language == 'fr_BE' %}Ligne de credit{% else %}Kredietlijn{% endif %}</td>
+            <td>{{ fmt.be_amount(contract.amount) }} EUR</td></tr>
+        <tr><td class="label">{% if language == 'fr_BE' %}Duree{% else %}Looptijd{% endif %}</td>
+            <td>{{ contract.duration_months }}</td></tr>
+        <tr><td class="label">{% if language == 'fr_BE' %}Taux debiteur{% else %}Debetrentevoet{% endif %}</td>
+            <td>{{ html.percentage(contract.rate) }}</td></tr>
+    </table>
+    {% endblock %}
+
+    {% block algemene_voorwaarden %}
+    <h2>{% if language == 'fr_BE' %}Conditions generales{% else %}Algemene Voorwaarden{% endif %}</h2>
+    {% include 'notifications/wet4892/includes/algemene_voorwaarden_%s.html' | format(language) %}
+    {% endblock %}
+
+    {% block aflossingsplan %}
+    <h2>{% if language == 'fr_BE' %}Tableau d'amortissement{% else %}Aflossingsplan{% endif %}</h2>
+    {% include 'documents/NewHyp/includes/loan_schedule.html' %}
+    {% endblock %}
+{% endblock %}

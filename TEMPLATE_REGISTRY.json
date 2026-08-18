@@ -2,7 +2,7 @@
   "meta": {
     "version": "1.0.0",
     "description": "Template Registry  - maps template keys to product lines, SKMs, and vFinance lifecycle stages",
-    "last_updated": "2026-05-21",
+    "last_updated": "2026-08-13",
     "lifecycle_note": "Sprint 3 release: de vintage_1074 set is gevalideerd en gepromoot naar stable/release. CI bewaakt de template-validatie op elke push.",
     "schema": {
       "template_key": "Unique identifier for the template",
@@ -17,14 +17,18 @@
       "has_xmp": "Whether XMP metadata files exist",
       "includes": "List of shared includes used by this template",
       "notes": "Additional context"
-    }
+    },
+    "localization_note": "R148 localization-refactor: account_movements gebruikt 1 unified template met from_list-taalselector (account_movements_BE.html) i.p.v. aparte _nl_BE/_fr_BE bestanden. Life_Insurance is de base; Boutique_23/Generic21/23/44/Short_Term_Cover zijn routers. De oude taalbestanden blijven staan tot na de render-test."
   },
   "templates": [
     {
       "template_key": "boutique23.contract",
       "product_line": "Boutique_23",
       "document_type": "contract",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
@@ -38,7 +42,10 @@
       "template_key": "boutique23.certificate",
       "product_line": "Boutique_23",
       "document_type": "certificate",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
@@ -52,7 +59,10 @@
       "template_key": "boutique23.eid",
       "product_line": "Boutique_23",
       "document_type": "eid",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
@@ -66,7 +76,10 @@
       "template_key": "credit_insurance.contract",
       "product_line": "Credit_Insurance",
       "document_type": "contract",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
@@ -80,49 +93,73 @@
       "template_key": "generic.empty_letter",
       "product_line": "Generic",
       "document_type": "empty_letter",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["includes/html_head_nl_BE.html", "includes/html_head_fr_BE.html", "includes/recipient-header.html"],
+      "includes": [
+        "includes/html_head_nl_BE.html",
+        "includes/html_head_fr_BE.html",
+        "includes/recipient-header.html"
+      ],
       "notes": "Base template for all empty letters across products"
     },
     {
       "template_key": "genericloan.empty_letter",
       "product_line": "GenericLoan",
       "document_type": "empty_letter",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["includes/html_head_nl_BE.html", "includes/html_head_fr_BE.html"],
+      "includes": [
+        "includes/html_head_nl_BE.html",
+        "includes/html_head_fr_BE.html"
+      ],
       "notes": "Extends Generic/empty_letter_BE.html with loan-specific address meta tags"
     },
     {
       "template_key": "life_insurance.contract",
       "product_line": "Life_Insurance",
       "document_type": "contract",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["includes/html_head_nl_BE.html", "includes/html_head_fr_BE.html", "Life_Insurance/includes/role.html", "Life_Insurance/includes/premium_details.html"],
+      "includes": [
+        "includes/html_head_nl_BE.html",
+        "includes/html_head_fr_BE.html",
+        "Life_Insurance/includes/role.html",
+        "Life_Insurance/includes/premium_details.html"
+      ],
       "notes": "Complex template with multiple includes for roles, premiums, and fund details"
     },
     {
       "template_key": "life_insurance.amendment",
       "product_line": "Life_Insurance",
       "document_type": "amendment",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
@@ -136,77 +173,114 @@
       "template_key": "newhyp.esis",
       "product_line": "NewHyp",
       "document_type": "esis",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["NewHyp/includes/annual_percentage_rate.html", "NewHyp/includes/loan_schedule.html", "NewHyp/includes/repayment_plan.html", "NewHyp/includes/credit_insurance_esis.html"],
+      "includes": [
+        "NewHyp/includes/annual_percentage_rate.html",
+        "NewHyp/includes/loan_schedule.html",
+        "NewHyp/includes/repayment_plan.html",
+        "NewHyp/includes/credit_insurance_esis.html"
+      ],
       "notes": "European Standardised Information Sheet  - wettelijk verplicht document"
     },
     {
       "template_key": "wet4892.esis",
       "product_line": "Wet4892",
       "document_type": "esis",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["Wet4892/includes/loan_schedule.html", "Wet4892/includes/loan_schedule_index.html", "Wet4892/includes/repayment_plan_index.html"],
+      "includes": [
+        "Wet4892/includes/loan_schedule.html",
+        "Wet4892/includes/loan_schedule_index.html",
+        "Wet4892/includes/repayment_plan_index.html"
+      ],
       "notes": "ESIS voor Wet 4892 kredieten  - bevat geïndexeerde aflossingsplanvarianten"
     },
     {
       "template_key": "wet4892.offer_summary",
       "product_line": "Wet4892",
       "document_type": "offer_summary",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["Wet4892/includes/guarantees_total_values_OS.html", "Wet4892/includes/assets_mortgage_liens_decision_OS.html", "Wet4892/includes/loan_schedule_decision.html"],
+      "includes": [
+        "Wet4892/includes/guarantees_total_values_OS.html",
+        "Wet4892/includes/assets_mortgage_liens_decision_OS.html",
+        "Wet4892/includes/loan_schedule_decision.html"
+      ],
       "notes": "Offer summary met beslissingsboom voor loan schedule varianten"
     },
     {
       "template_key": "roerend.agreement",
       "product_line": "Roerend",
       "document_type": "agreement",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "release",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["Roerend/includes/advance_composition.html", "Roerend/includes/annual_percentage_rate.html", "Roerend/includes/repayment_plan.html"],
+      "includes": [
+        "Roerend/includes/advance_composition.html",
+        "Roerend/includes/annual_percentage_rate.html",
+        "Roerend/includes/repayment_plan.html"
+      ],
       "notes": "Roerend krediet overeenkomst"
     },
     {
       "template_key": "newhyp.esis",
       "product_line": "NewHyp",
       "document_type": "esis",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["NewHyp/includes/loan_schedule.html"],
+      "includes": [
+        "NewHyp/includes/loan_schedule.html"
+      ],
       "notes": "Migratie sprint 1: Europees gestandaardiseerd informatieblad"
     },
     {
       "template_key": "hyposelect.esis",
       "product_line": "HypoSelect",
       "document_type": "esis",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -220,7 +294,10 @@
       "template_key": "wet4892.esis",
       "product_line": "Wet4892",
       "document_type": "esis",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -234,21 +311,29 @@
       "template_key": "newhyp.loan_schedule",
       "product_line": "NewHyp",
       "document_type": "loan_schedule",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.1.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["NewHyp/includes/loan_schedule.html"],
+      "includes": [
+        "NewHyp/includes/loan_schedule.html"
+      ],
       "notes": "Index detection gefixed voor gelokaliseerde bedragen (1.1.0)"
     },
     {
       "template_key": "wet4892.offer_summary",
       "product_line": "Wet4892",
       "document_type": "offer_summary",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -262,7 +347,10 @@
       "template_key": "newhyp.agreement",
       "product_line": "NewHyp",
       "document_type": "agreement",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -276,7 +364,10 @@
       "template_key": "generic.av",
       "product_line": "Generic",
       "document_type": "av",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -290,7 +381,10 @@
       "template_key": "life_insurance.av",
       "product_line": "Life_Insurance",
       "document_type": "av",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -304,7 +398,10 @@
       "template_key": "credit_insurance.av",
       "product_line": "Credit_Insurance",
       "document_type": "av",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -318,7 +415,10 @@
       "template_key": "generic.eid",
       "product_line": "Generic",
       "document_type": "eid",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -332,21 +432,27 @@
       "template_key": "life_insurance.account_movements",
       "product_line": "Life_Insurance",
       "document_type": "account_movements",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
-      "semver": "1.0.0",
+      "semver": "2.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": true,
       "includes": [],
-      "notes": "Periodeoverzicht bewegingen op verzekeringspolis"
+      "notes": "Periodeoverzicht bewegingen op verzekeringspolis. R148: unified from_list template (account_movements_BE.html)."
     },
     {
       "template_key": "life_insurance.transaction",
       "product_line": "Life_Insurance",
       "document_type": "transaction",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
       "semver": "1.0.0",
@@ -360,49 +466,63 @@
       "template_key": "generic23.account_movements",
       "product_line": "Generic23",
       "document_type": "account_movements",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
-      "semver": "1.0.0",
+      "semver": "2.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
       "includes": [],
-      "notes": "Sprint 2 consolidatie: familie-base voor Tak 23 generic movements, erft Life_Insurance"
+      "notes": "Sprint 2 consolidatie: familie-base voor Tak 23 generic movements, erft Life_Insurance. R148: unified from_list template (account_movements_BE.html)."
     },
     {
       "template_key": "generic21.account_movements",
       "product_line": "Generic21",
       "document_type": "account_movements",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
-      "semver": "1.0.0",
+      "semver": "2.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
-      "includes": ["Generic21/includes/invoice_state_override.html"],
-      "notes": "Erft Generic23, voegt Tak 21 invoice_state override toe (gewaarborgde rente + premietaks)"
+      "includes": [
+        "Generic21/includes/invoice_state_override.html"
+      ],
+      "notes": "Erft Generic23, voegt Tak 21 invoice_state override toe (gewaarborgde rente + premietaks). R148: unified from_list template (account_movements_BE.html)."
     },
     {
       "template_key": "generic44.account_movements",
       "product_line": "Generic44",
       "document_type": "account_movements",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
-      "semver": "1.0.0",
+      "semver": "2.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
       "includes": [],
-      "notes": "Erft Generic23, enkel titel/code verschil"
+      "notes": "Erft Generic23, enkel titel/code verschil. R148: unified from_list template (account_movements_BE.html)."
     },
     {
       "template_key": "boutique.regdata_ng",
       "product_line": "_shared_boutique",
       "document_type": "regdata",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "draft",
       "semver": "0.1.0",
@@ -416,15 +536,35 @@
       "template_key": "short_term_cover.account_movements",
       "product_line": "Short_Term_Cover",
       "document_type": "account_movements",
-      "locales": ["nl_BE", "fr_BE"],
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
       "vintage_branch": "vintage_1074",
       "lifecycle_stage": "feature-freeze",
-      "semver": "1.0.0",
+      "semver": "2.0.0",
       "has_regdata": false,
       "has_sidata": false,
       "has_xmp": false,
       "includes": [],
-      "notes": "Sprint 2: gemigreerd naar de Life_Insurance movements base"
+      "notes": "Sprint 2: gemigreerd naar de Life_Insurance movements base. R148: unified from_list template (account_movements_BE.html)."
+    },
+    {
+      "template_key": "boutique23.account_movements",
+      "product_line": "Boutique_23",
+      "document_type": "account_movements",
+      "locales": [
+        "nl_BE",
+        "fr_BE"
+      ],
+      "vintage_branch": "vintage_1074",
+      "lifecycle_stage": "feature-freeze",
+      "semver": "2.0.0",
+      "has_regdata": false,
+      "has_sidata": false,
+      "has_xmp": true,
+      "includes": [],
+      "notes": "R148: unified from_list template (account_movements_BE.html), erft Life_Insurance base"
     }
   ],
   "_note": "Sprint 1: ESIS, AV, EID, loan_schedule (gefixed), offer_summary, agreement, account_movements, transaction. Sprint 2: SKM consolidatie (Generic21/23/44, Boutique REGData/SIData shared base, Short_Term_Cover). Sprint 3: ng-fiches gegenereerd, CI validatie, handover docs, release naar 1.0.0."
